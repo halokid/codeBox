@@ -2,15 +2,15 @@
 
 
 $url_arr = array ('baidu.com/aa/bb',
-									'yahoo.com/cc/dd',
-									'360.com/ee/ff',
-									'google.com/gg/hh'
+				  'yahoo.com/cc/dd',
+				  '360.com/ee/ff',
+				  'google.com/gg/hh'
 								);
 
 $ip_arr = array ('10.10.10.29',
-								 '55.55.55.22',
-								 '87.56.45.59',
-								 '48.15.46.54'
+				 '55.55.55.22',
+				 '87.56.45.59',
+				 '48.15.46.54'
 							 );
 
 $rds = new Redis();
