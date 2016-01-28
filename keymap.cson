@@ -26,6 +26,11 @@
 # Atom Flight Manual:
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
 
+
+'atom-text-editor.vim-mode.normal-mode':
+   'ctrl-r' : 'unset!'
+
+
 '.platform-win32 atom-text-editor':
    'ctrl-alt-f2': 'unset!'
    'ctrl-alt-f2': 'bookmarks:view-all'
@@ -33,6 +38,8 @@
    'ctrl-f2': 'bookmarks:toggle-bookmark'
    'f3': 'find-and-replace:show'
    'ctrl-shift-alt-o': 'application:add-project-folder'
+   'ctrl-r' : 'unset!'
+   'ctrl-r' : 'symbols-view:toggle-file-symbols'
 
 #'.platform-win32, .platform-linux':
 #   'f3': 'find-and-replace:show'
