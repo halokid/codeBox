@@ -27,8 +27,8 @@
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
 
 
-'atom-text-editor.vim-mode.normal-mode':
-   'ctrl-r' : 'unset!'
+# 'atom-text-editor.vim-mode.normal-mode':
+   # 'ctrl-r' : 'unset!'
 
 
 '.platform-win32 atom-text-editor':
@@ -38,8 +38,8 @@
    'ctrl-f2': 'bookmarks:toggle-bookmark'
    'f3': 'find-and-replace:show'
    'ctrl-shift-alt-o': 'application:add-project-folder'
-   'ctrl-r' : 'unset!'
-   'ctrl-r' : 'symbols-view:toggle-file-symbols'
+   # 'ctrl-r' : 'unset!'
+   'ctrl-6' : 'symbols-view:toggle-file-symbols'
 
 #'.platform-win32, .platform-linux':
 #   'f3': 'find-and-replace:show'
