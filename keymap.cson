@@ -26,6 +26,11 @@
 # Atom Flight Manual:
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
 
+'atom-workspace':
+   'ctrl-alt-6': 'project-folder:add'
+   'ctrl-alt-7': 'project-folder:remove'
+   'ctrl-alt-8': 'project-folder:replace'
+
 '.platform-win32 atom-text-editor':
    'ctrl-alt-f2': 'unset!'
    'ctrl-alt-f2': 'bookmarks:view-all'
@@ -46,3 +51,8 @@
 
 #'atom-workspace':
 #   'ctrl-alt-f2': 'bookmarks:view-all'
+
+'.project-folder atom-text-editor[mini]':
+   'ctrl-alt-9': 'project-folder:replace'
+
+
