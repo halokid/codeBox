@@ -41,12 +41,12 @@
   'function declare':
     'prefix': 'func_dc'
     'body':"""
-     /**\r\n*@author: JJyy\r\n*@todo: del repeative element for slice\r\n*@param: \r\n*@return: \r\n*\r\n**/
+     /**\r\n*\r\n*\r\n*@author: JJyy\r\n*@param: \r\n*@return: \r\n*\r\n**/
     """
   'class declare':
     'prefix': 'cls_dc'
     'body':"""
-     /**\r\n*@author: JJyy\r\n*@todo: del repeative element for slice\r\n*\r\n**/
+     /**\r\n*\r\n*\r\n*@author: JJyy\r\n*@access: \r\n*\r\n**/
     """
 
     
