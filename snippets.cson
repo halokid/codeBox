@@ -20,15 +20,33 @@
 # Atom Flight Manual:
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
 
+# '.source.php':
+#   'function declare':
+#     'prefix': 'func_dc'
+#     'body':"""
+#      /**\r\n*@author: JJyy\r\n*@todo: del repeative element for slice\r\n*@param: \r\n*@return: \r\n*\r\n**/
+#     """
+#   'class declare':
+#     'prefix': 'cls_dc'
+#     'body':"""
+#      /**\r\n*@author: JJyy\r\n*@todo: del repeative element for slice\r\n*\r\n**/
+#     """
 
-'.source.php':
+'.source':
+  'file declare':
+    'prefix': 'file_dc'
+    'body':"""
+     /**\r\n* Copyright 0x029 Inc. \r\n* License: MIT License\r\n* Author: JJyy<82049406@qq.com>\r\n* This file is ...\r\n**/
+    """
   'function declare':
     'prefix': 'func_dc'
     'body':"""
-     /**\r\n*@author: JJyy\r\n*@todo: del repeative element for slice\r\n*@param: \r\n*\r\n**/
+     /**\r\n*@author: JJyy\r\n*@todo: del repeative element for slice\r\n*@param: \r\n*@return: \r\n*\r\n**/
     """
   'class declare':
     'prefix': 'cls_dc'
     'body':"""
      /**\r\n*@author: JJyy\r\n*@todo: del repeative element for slice\r\n*\r\n**/
     """
+
+    
