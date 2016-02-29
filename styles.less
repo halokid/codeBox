@@ -122,3 +122,27 @@ atom-text-editor::shadow .lines .line.cursor-line {
    background-color: rgba(228, 246, 212, 0.7);
 }
 **/
+
+/**
+* 有时候自己定义的这段 vi-mode 查找的样式无效，在这个文件这里再重复定义一次，确保生效
+**/
+atom-text-editor,
+atom-text-editor::shadow {
+  .find-result .region {
+    background-color: rgba(154,255,86,0.30);
+    border-radius: @component-border-radius;
+    border: 1px solid @syntax-result-marker-color;
+    box-sizing: border-box;
+    z-index: 0;
+  }
+
+  .current-result .region {
+//  background-color: rgba(0,0,0,0.30); 
+    border-radius: @component-border-radius;
+    border: 1px solid @syntax-result-marker-color-selected;
+    box-sizing: border-box;
+    z-index: 0;
+  }
+}
+
+
