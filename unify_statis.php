@@ -37,12 +37,12 @@ $ip_arr = array ('10.10.10.29',
 			     );
 
 
-$sywurl_arr = array( 'www.syshop.com/goods/gooddetail/1020',
-                     'www.syshop.com/bsq',
-                     'www.syshop.com/koubei',
-                     'www.syshop.com/help/999',
-                     'www.syshop.com/member/xxx',
-                     'www.syshop.com'
+$sywurl_arr = array( 'www.xxxxxx.com/goods/gooddetail/1020',
+                     'www.xxxxxx.com/bsq',
+                     'www.xxxxxx.com/koubei',
+                     'www.xxxxxx.com/help/999',
+                     'www.xxxxxx.com/member/xxx',
+                     'www.xxxxxx.com'
                    );
 
 
@@ -56,8 +56,8 @@ for( $i=0; $i< 100; $i++ ) {
 
     $key = $sessid_arr[array_rand($sessid_arr)].':'.$t.':'.$ip_arr[array_rand($ip_arr)].':'.$qudao_tags[array_rand($qudao_tags)].':0';
 
-    //$rds->set( $sessid_arr[array_rand($sessid_arr)].':'.$t.':'.$ip_arr[array_rand($ip_arr)].':'.$qudao_tags[array_rand($qudao_tags)].':0', 'www.syshop.com/goods/gooddetail/1020:'.microtime(true) );	
-    //$rds->set( $key, 'www.syshop.com/goods/gooddetail/1020:'.microtime(true) );	
+    //$rds->set( $sessid_arr[array_rand($sessid_arr)].':'.$t.':'.$ip_arr[array_rand($ip_arr)].':'.$qudao_tags[array_rand($qudao_tags)].':0', 'www.xxxxxx.com/goods/gooddetail/1020:'.microtime(true) );	
+    //$rds->set( $key, 'www.xxxxxx.com/goods/gooddetail/1020:'.microtime(true) );	
 
 
     for( $j=0; $j<100; $j++ ) {
