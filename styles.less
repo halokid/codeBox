@@ -15,6 +15,22 @@
  * (To see them, uncomment and save)
  */
 
+/** 
+.editor.is-focused {
+  .line.cursor-line {
+    background: transparent;
+  }
+}
+**/
+
+//取消行高亮设置
+atom-text-editor.is-focused::shadow {
+  .line.cursor-line, .line-number.cursor-line-no-selection {
+    background-color: transparent;
+  }
+}
+
+
 // style the background color of the tree view
 .tree-view {
   // background-color: whitesmoke;
