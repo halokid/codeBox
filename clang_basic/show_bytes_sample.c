@@ -19,6 +19,15 @@ void show_float(float x) {
   show_bytes((byte_pointer) &x, sizeof(float));
 }
 
-void show_bytes(void *x) {
+void show_pointer(void *x) {
   show_bytes((byte_pointer)  &x, sizeof(void *));
+}
+
+
+
+int main(int argc, char **argv)
+{
+  const char *s = "abcdef";
+  show_bytes( (byte_pointer) s, strlen(s) );
+  return 0;
 }

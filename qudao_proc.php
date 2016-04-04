@@ -1,5 +1,12 @@
 <?php
 
+/**
+这个是从外部网站链接过来syw本站的时候记录的数据获取
+
+直接的订单转化率， 直接的注册转化率都是靠这个统计，都是要不能断开链接的一次过逻辑
+
+* */
+
 
 $url_arr = array ('baidu.com/aa/bb',
 				  'yahoo.com/cc/dd',
@@ -22,3 +29,12 @@ for( $i=0; $i< 100; $i++ ) {
 	$rds->set( $t.':'.$ip_arr[array_rand($ip_arr)],  $t.':'.$url_arr[array_rand($url_arr)].':'.$ip_arr[array_rand($ip_arr)].':0:0:0:0' );	
 	sleep(1);
 }
+
+
+
+
+
+
+
+
+
