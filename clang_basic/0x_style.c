@@ -6,6 +6,7 @@ int main(int argc, char *argv[])
 {
 	printf("int %d\n", 0xBA);
 	//printf("string %s\n", 0xBA);
+	printf("string %c\n", 0xBA);
 
 	char *ptr;
 	ptr = malloc(1000);
