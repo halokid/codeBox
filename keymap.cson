@@ -54,5 +54,12 @@
 
 '.project-folder atom-text-editor[mini]':
    'ctrl-alt-9': 'project-folder:replace'
+   
+'body':
+  'ctrl-tab': 'pane:show-next-item'
+  'ctrl-shift-tab': 'pane:show-previous-item'
+  
+  
+
 
 
