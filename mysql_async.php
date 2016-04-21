@@ -29,7 +29,7 @@ do {
 		continue;
 	}
 
-	$i=0;	
+	// $i=0;	
 	$rows = array();
 	foreach( $links as $link ) {
 		if ( $result = $link->reap_async_query() ) {
@@ -38,7 +38,8 @@ do {
 		  
 			while ( $row = $result->fetch_row() ) {
 				//print_r($row);
-				$rows[$i][] = $row;
+				// $rows[$i][] = $row;
+				$rows[] = $row;
 			}
 			echo count($rows[$i])."\n";
 
@@ -46,7 +47,7 @@ do {
 				mysqli_free_result($result);
 			}
 
-			$i++;
+			// $i++;
 		}
 		else die( sprintf("error:	%s\n", mysqli_error($link) ));
 
