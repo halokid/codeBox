@@ -1,0 +1,8 @@
+{
+  "autoload":{
+    "files":[
+      "ForumArticle.php",
+      "BoardArticle.php"
+    ]
+  }
+}

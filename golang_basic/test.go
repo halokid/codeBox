@@ -5,7 +5,8 @@ import (
 )
 
 func main() {
-	const n = 1e3
-	fmt.Println(n)
+	i := 7
+	k := i >> 1
+	fmt.Println(k)
 }
 

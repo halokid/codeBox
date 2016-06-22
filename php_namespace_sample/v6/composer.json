@@ -1,0 +1,10 @@
+{
+  "autoload": {
+    "classmap": [
+      "my_lib"
+    ]
+    "psr-0": {
+      "Tony\\Discussion\\": "my_lib/"
+    }
+  }
+}
