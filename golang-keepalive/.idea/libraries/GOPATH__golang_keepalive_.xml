@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="GOPATH &lt;golang-keepalive&gt;">
+    <CLASSES>
+      <root url="file://E:/gopath/src/golang.org" />
+      <root url="file://E:/gopath/src/github.com" />
+      <root url="file://E:/gopath/src/google.golang.org" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://E:/gopath/src/golang.org" />
+      <root url="file://E:/gopath/src/github.com" />
+      <root url="file://E:/gopath/src/google.golang.org" />
+    </SOURCES>
+    <excluded>
+      <root url="file://$PROJECT_DIR$" />
+    </excluded>
+  </library>
+</component>
