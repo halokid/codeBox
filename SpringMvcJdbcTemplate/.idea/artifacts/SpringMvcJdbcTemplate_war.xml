@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="SpringMvcJdbcTemplate:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="SpringMvcJdbcTemplate.war">
+      <element id="artifact" artifact-name="SpringMvcJdbcTemplate:war exploded" />
+    </root>
+  </artifact>
+</component>
