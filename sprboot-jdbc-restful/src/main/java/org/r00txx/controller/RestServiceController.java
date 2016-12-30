@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.r00txx.api.Greeting;
+import org.r00txx.dao.userDao;
 import org.r00txx.entity.IMovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -73,11 +74,75 @@ public class RestServiceController {
     Movie movie;
     movie = repo.findOne(id);
 
+    System.out.println("------------------ output API --------------");
     return new Greeting(id, movie.getTitle());
 
 //     */
   }
 
+
+  // 返回空的对象
+  @RequestMapping("/movies/testapi")
+  @ResponseBody
+  public Object[] testApi() {
+
+//    return  new Greeting(1, "jimmy");
+
+//    /**
+
+
+    System.out.println("------------------ output API --------------");
+    return new Object[] {100, "hello"};
+
+//     */
+  }
+
+
+
+  @Autowired
+  private userDao userdao;
+  // 自定义sql语句查询的列子
+  @RequestMapping("/movies/sql")
+  @ResponseBody
+  public Object[] testSql() {
+
+//    return  new Greeting(1, "jimmy");
+
+//    /**
+
+
+
+    System.out.println("------------------ output API --------------");
+//    return new Object[] {100, "hello"};
+    String tmp = userdao.queryUsers();
+    return new Object[] {100, tmp};
+//     */
+  }
+
+
+
+//  @Autowired
+//  private userDao userdao;
+  // 返回多维度json的列子
+  @RequestMapping("/movies/mutilapi")
+  @ResponseBody
+  public Object[] testMuli() {
+
+//    return  new Greeting(1, "jimmy");
+
+//    /**
+
+
+
+    System.out.println("------------------ output API --------------");
+//    return new Object[] {100, "hello"};
+//    String tmp = userdao.queryUsers();
+    Object a = new Object[] {1, "aaaa"};
+    Object b = new Object[] {2, "bbbb"};
+
+    return new Object[] {a, b};
+//     */
+  }
 
 
   // UPDATE
