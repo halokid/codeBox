@@ -1,0 +1,10 @@
+---
+instances: 1
+memory: 512MB
+applications:
+  -  name: jimmy-poc
+     host: jimmypoc
+     random-route: true
+     path: ./jimmy-sample.war
+     services:
+      - autoscaler

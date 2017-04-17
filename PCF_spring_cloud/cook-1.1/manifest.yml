@@ -1,0 +1,8 @@
+---
+instances: 1
+memory: 1G
+applications:
+  - name: jimmycook
+    host: jimmy-cookie
+    env:
+      SPRING_PROFILES_ACTIVE: dev

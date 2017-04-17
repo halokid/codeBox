@@ -1,0 +1,48 @@
+:imagesdir: docs/images
+
+= Config Server sample
+
+*Cook* is an example application demonstrating the use of Config Server for Pivotal Cloud Foundry. (For information on the Config Server product, please http://docs.pivotal.io/spring-cloud-services/config-server/[see the documentation].)
+
+== Building and Deploying
+
+. If using Maven, run:
++
+....
+$ mvn package
+....
++
+If using Gradle, run `./gradlew build` (OS X, Linux) or `gradlew.bat build` (Windows).
++
+....
+$ ./gradlew build
+....
+
+. Run the deployment script (link:scripts/deploy.sh[`scripts/deploy.sh`] on Linux or OS X, link:scripts/deploy.bat[`scripts/deploy.bat`] on Windows), giving it the path to the application archive. (This will be something like `target/cook-0.0.1-SNAPSHOT.jar` if you used Maven or `build/libs/cook-0.0.1-SNAPSHOT.jar` if you used Gradle.)
++
+....
+$ ./scripts/deploy.sh target/cook-0.0.1-SNAPSHOT.jar
+....
++
+The script will create a Config Server service instance, push the application, and bind the Config Server service instance to the application.
+
+. When the script has finished, set the `CF_TARGET` environment variable to the API endpoint of your Elastic Runtime instance (as in `https://api.example.com`), then run `cf restage cook` to restage the application so that that change will take effect. Setting `CF_TARGET` causes Spring Cloud Services to add the the SSL certificate at the specfied API endpoint to the JVM's truststore, so that the client application can communicate with a Config Server service instance even if your Elastic Runtime instance is using a self-signed SSL certificate (see the http://docs.pivotal.io/spring-cloud-services/config-server/writing-client-applications.html#disable-http-basic-auth[Config Server documentation]).
++
+....
+$ cf set-env cook CF_TARGET https://api.wise.com
+Setting env variable 'CF_TARGET' to 'https://api.wise.com' for app cook in org myorg / space development as user...
+OK
+TIP: Use 'cf restage' to ensure your env variable changes take effect
+$ cf restage cook
+....
++
+[NOTE]
+====
+By default, the Config Server client dependency will cause all application endpoints to be secured by HTTP Basic authentication. For more information or if you wish to disable this, http://docs.pivotal.io/spring-cloud-services/config-server/writing-client-applications.html#disable-http-basic-auth[see the documentation]. (HTTP Basic authentication is disabled in this sample application.)
+====
+
+== Trying It Out
+
+. Visit `[ROUTE]/restaurant`, where `[ROUTE]` is the route bound to the application. The &#8220;special&#8221; of the day will be taken from the configuration repository and the value of `cook.special`.
++
+image::special-of-the-day.png[link:docs/images/special-of-the-day.png]
