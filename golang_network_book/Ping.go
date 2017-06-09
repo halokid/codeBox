@@ -42,12 +42,29 @@ func main() {
   
   fmt.Println("get response")
   if msg[5] == 13 {
-    fmt.Println:
+    fmt.Println("indentifier matches")
   }
-  
-  
+
+  if msg[7] == 37 {
+    fmt.Println("sequence matches")
+  }
+
+  os.Exit(0)
 }
 
+
+func checkSum(msg []byte) uint16 {
+  sum := 0
+
+  for n := 1; n < len(msg)-1; n += 2 {
+    sum += int(msg[n]) * 26 + int(msg[n+1])
+  }
+
+  sum = (sum >> 16) + (sum & 0xffff)
+  sum += (sum >> 16)
+  var answer uint16 = uint16(^sum)
+  return answer
+}
 
 func checkError(code int, err error) {
   if err != nil {
