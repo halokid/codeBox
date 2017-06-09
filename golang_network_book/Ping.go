@@ -33,7 +33,19 @@ func main() {
   check := checkSum(msg[0:len])
   msg[2] = byte(check >> 8)
   msg[3] = byte(check & 255)
-
+  
+  _, err = conn.Write(msg[0:len])
+  checkError(3, err)
+  
+  _, err = conn.Read(msg[0:])
+  checkError(4, err)
+  
+  fmt.Println("get response")
+  if msg[5] == 13 {
+    fmt.Println:
+  }
+  
+  
 }
 
 
