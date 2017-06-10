@@ -1,14 +1,13 @@
 package main
 
-import (
-
-)
+import ()
 import (
   "os"
   "fmt"
   "net"
   "bufio"
   "strings"
+  "bytes"
 )
 
 const (
@@ -32,9 +31,8 @@ func main() {
 
   host := os.Args[1]
 
-  conn, err := net.Dial("tcp", host+":1202")
+  conn, err := net.Dial("tcp", host + ":1202")
   checkError(1, err)
-
 
   reader := bufio.NewReader(os.Stdin)
 
@@ -47,7 +45,76 @@ func main() {
       break
     }
 
-    strs := strings.SplitN()
+    strs := strings.SplitN(line, " ", 2)
+
+    switch strs[0] {
+    case uiDir:
+      dirRequest(conn)    //----------------
+    case uiCd:
+      if len(strs) != 2 {
+        fmt.Println("cd <dir>")
+        continue
+      }
+      fmt.Println("CD \"", strs[1], "\" ")
+      cdRequest(conn, strs[1])      //-----------------
+    case uiPwd:
+      pwdRequest(conn)        //-----------------------
+    case uiQuit:
+      conn.Close()
+      os.Exit(0)
+    default:
+      fmt.Println("unknow command")
+
+    }
 
   }
 }
+
+
+
+func dirRequest(conn net.Conn) {
+  //----------------
+}
+
+func cdRequest(conn net.Conn, dir string) {
+
+}
+
+func pwdRequest(conn net.Conn) {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
