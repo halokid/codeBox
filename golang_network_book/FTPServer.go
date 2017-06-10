@@ -57,6 +57,74 @@ func handleClient(conn net.Conn) {
 }
 
 
+func chdir(conn net.Conn, s string) {
+  if os.Chdir(s) == nil {
+    conn.Write([]byte("OK"))
+  } else {
+    conn.Write([]byte("ERROR"))
+  }
+}
+
+
+func pwd(conn net.Conn) {
+  s, err := os.Getwd()
+  if err != nil {
+    conn.Write([]byte(""))
+    return
+  }
+  conn.Write([]byte(s))
+}
+
+
+func dirList(conn net.Conn) {
+  defer conn.Write([]byte("\r\n"))
+
+  dir, err := os.Open(".")
+  if err != nil {
+    return
+  }
+
+  names, err := dir.Readdirnames(-1)
+  if err != nil {
+    return
+  }
+
+  for _, nm := range names {
+    conn.Write([]byte(nm + "\r\n"))
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
