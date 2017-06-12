@@ -1,9 +1,6 @@
 package main
 
 import (
-
-)
-import (
   "os"
   "fmt"
   "net/url"
