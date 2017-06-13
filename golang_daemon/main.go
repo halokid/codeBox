@@ -10,6 +10,7 @@ import (
   "fmt"
   "os"
   "time"
+  "net/http"
 )
 
 
@@ -23,7 +24,11 @@ const (
   MYSQL_PORT = "3306"
 
   REDIS_HOST = "172.20.71.175"
-  REDIS_PORT = "6379"
+  REDIS_PORT = "6381"
+
+  SHOP = "http://172.20.71.174"
+  DIS = "http://172.20.71.174"
+  CACHECL = "http://172.20.71.174:8585"
 )
 
 
@@ -60,7 +65,7 @@ func (runDaemon *RunDaemon) runRedis() {
   checkError("redis set key", errSet)
   **/
 
-  c, err := redis.Dial("tcp", REDIS_HOST+":6381")
+  c, err := redis.Dial("tcp", REDIS_HOST + ":" + REDIS_PORT)
   checkError("redis conn", err)
 
   _, err = c.Do("SET", "pwdxxx4", "123456", "EX", "10")
@@ -70,6 +75,36 @@ func (runDaemon *RunDaemon) runRedis() {
   _, err = c.Do("SET", "pwdxx123123114", "123456", "EX", "10")
   checkError("redis set key", err)
 }
+
+
+//visit web sometimes
+func (runDaemon *RunDaemon) runWeb() {
+  client := &http.Client{}
+  request, err := http.NewRequest("GET", SHOP, nil)
+  checkError("webclient error", err)
+  response, err := client.Do(request)
+  fmt.Println(response.Status)
+  checkError("webclient do request", err)
+}
+
+func (runDaemon *RunDaemon) runWeb1() {
+  client := &http.Client{}
+  request, err := http.NewRequest("GET", DIS, nil)
+  checkError("webclient error", err)
+  response, err := client.Do(request)
+  fmt.Println(response.Status)
+  checkError("webclient do request", err)
+}
+
+func (runDaemon *RunDaemon) runWeb2() {
+  client := &http.Client{}
+  request, err := http.NewRequest("GET", CACHECL, nil)
+  checkError("webclient error", err)
+  response, err := client.Do(request)
+  fmt.Println(response.Status)
+  checkError("webclient do request", err)
+}
+
 
 func checkError(p string, err error) {
   if err != nil {
@@ -85,6 +120,9 @@ func main() {
     time.Sleep(10 * time.Second)
     runDaemon.runMysql()
     runDaemon.runRedis()
+    runDaemon.runWeb()
+    runDaemon.runWeb1()
+    runDaemon.runWeb2()
   }
 }
 
