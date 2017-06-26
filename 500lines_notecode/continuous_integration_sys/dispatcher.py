@@ -130,7 +130,7 @@ class DispatcherHandler(SocketServer.BaseRequestHandler):
           try:
             response = helper.communicate(runner["host"],
                                           int(runner["port"]),
-                                          "ping")
+                                          "ping")      #判断跑 git pull的机器（也就是run_test服务器的机器是否存活）
             if response != "pong":
               print "removing runner %s" % runner
               manage_commit_lists(runner)
@@ -148,8 +148,8 @@ class DispatcherHandler(SocketServer.BaseRequestHandler):
 
 
     # multi thread process code model
-    runner_hearbeat = threading.Thread(target = runner_checker,args = (server,))
-    redistributor = threading.Thread(target = redistribute, args=(server,))
+    runner_hearbeat = threading.Thread(target = runner_checker,args = (server,))    #多线程执行run_test 服务器的测试实例
+    redistributor = threading.Thread(target = redistribute, args=(server,))         #多线程执行处理pending服务器的程序，主要是检查pending服务器是否存活
 
     try:
       runner_hearbeat.start()
