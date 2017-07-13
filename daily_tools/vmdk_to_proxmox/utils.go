@@ -1,11 +1,14 @@
 package main
 
 import (
+  "os"
   "os/exec"
-  //"fmt"
+  "fmt"
   "strings"
   "math/rand"
   "strconv"
+  //"sync"
+  "sync"
 )
 
 /**
@@ -45,7 +48,34 @@ func checkVmId(newid string, existsIds []string) string{
 }
 
 
+/**
+run create vm command
+ */
+//func makeVm(comm string, lock *sync.Mutex) {
+func makeVm(comm string, wg *sync.WaitGroup) {
+//func makeVm(comm string) {
+  //lock := &sync.Mutex{}
+  //lock.Lock()
+  defer wg.Done()
 
+  cmd := exec.Command(comm)
+  out, _ := cmd.CombinedOutput()
+  //fmt.Println(string(out))
+  f, _ := os.OpenFile("./log.txt", os.O_WRONLY|os.O_APPEND, 0666)
+  logOut := "--------------------------------------\n\r" + string(out) + "\n\r"
+  f.WriteString(logOut)
+  f.Close()
+
+  //lock.Unlock()
+}
+
+
+func CheckErr(s string, err error) {
+  if err != nil {
+    fmt.Println(s)
+    os.Exit(0)
+  }
+}
 
 
 
