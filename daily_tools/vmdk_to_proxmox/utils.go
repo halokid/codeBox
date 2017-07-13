@@ -52,7 +52,7 @@ func checkVmId(newid string, existsIds []string) string{
 run create vm command
  */
 //func makeVm(comm string, lock *sync.Mutex) {
-func makeVm(comm string, wg *sync.WaitGroup) {
+func makeVm(newVmId, comm string, wg *sync.WaitGroup) {
 //func makeVm(comm string) {
   //lock := &sync.Mutex{}
   //lock.Lock()
@@ -62,7 +62,7 @@ func makeVm(comm string, wg *sync.WaitGroup) {
   out, _ := cmd.CombinedOutput()
   //fmt.Println(string(out))
   f, _ := os.OpenFile("./log.txt", os.O_WRONLY|os.O_APPEND, 0666)
-  logOut := "--------------------------------------\n\r" + string(out) + "\n\r"
+  logOut := "------------------ creating " + newVmId + " --------------------\n\r" + string(out) + "\n\r"
   f.WriteString(logOut)
   f.Close()
 

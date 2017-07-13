@@ -71,7 +71,7 @@ func main() {
 
     wg.Add(1)
 
-    go makeVm(vmComm, &wg)
+    go makeVm(newVmId, vmComm, &wg)
 
     //go makeVm(vmComm)
     //runtime.Gosched()
