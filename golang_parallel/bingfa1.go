@@ -20,7 +20,7 @@ func counter(lock *sync.Mutex) {
 func main() {
   lock := &sync.Mutex{}
   for i := 0; i < 10; i++ {
-    go counter(lock)
+    go counter(lock)      //要锁住一个 goroutine 的处理流程，常规来说必须把 mutex 传入到 go func() 里面去才可以
   }
   //time.Sleep(10 * time.Second)
 
