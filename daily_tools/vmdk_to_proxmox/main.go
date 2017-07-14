@@ -54,7 +54,7 @@ func main() {
               "sleep 3; " +
               "mkdir -p /var/lib/vz/images/" + newVmId + "; " +
               "sleep 3; " +
-              "cp ./" + sec + ".vmdk /var/lib/vz/images/" + newVmId + "/vm-" + newVmId + "-disk-1.vmdk; " +
+              "mv ./" + sec + ".vmdk /var/lib/vz/images/" + newVmId + "/vm-" + newVmId + "-disk-1.vmdk; " +
               "sleep 3; " +
               "qm start " + newVmId
 
