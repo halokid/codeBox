@@ -52,7 +52,7 @@ run create vm command
  */
 //func makeVm(comm string, lock *sync.Mutex) {
 //func makeVm(newVmId, comm string, wg *sync.WaitGroup) {
-  func makeVm(newVmId, comm string) {
+func makeVm(newVmId, comm string) {
 //func makeVm(comm string) {
   //lock := &sync.Mutex{}
   //lock.Lock()
@@ -68,6 +68,14 @@ run create vm command
 
   //lock.Unlock()
 }
+
+/**
+check vm ip is reachable
+ */
+func checkVmIp(ip string) {
+  
+}
+
 
 
 func CheckErr(s string, err error) {

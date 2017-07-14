@@ -85,8 +85,9 @@ func main() {
   //fmt.Println(vmCommSli)
   //wg.Wait()
 
-  fmt.Println("----------------- all finished -----------------")
   //check the new vm status
+
+  fmt.Println("----------------- all finished -----------------")
 
 }
 
