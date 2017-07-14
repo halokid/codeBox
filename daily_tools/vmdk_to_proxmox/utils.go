@@ -73,7 +73,14 @@ func makeVm(newVmId, comm string) {
 /**
 check vm ip is reachable
  */
-func checkVmIp(ip string) {
+func checkVmIp(ip string) int {
+  cmd := exec.Command("/bin/bash", "-c", "ping " + ip + " -c 1 -W 2")
+  out, _ := cmd.CombinedOutput()
+  if strings.Contains(string(out), "0% packet loss") {
+    return 1
+  } else {
+    return 0
+  }
   
 }
 
