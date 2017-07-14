@@ -58,9 +58,10 @@ func makeVm(newVmId, comm string) {
   //lock.Lock()
   //defer wg.Done()
 
-  cmd := exec.Command(comm)
+  //cmd := exec.Command(comm)
+  cmd := exec.Command("/bin/bash", "-c", comm)
   out, _ := cmd.CombinedOutput()
-  //fmt.Println(string(out))
+  fmt.Println(string(out))
   f, _ := os.OpenFile("./log.txt", os.O_WRONLY|os.O_APPEND, 0666)
   logOut := "------------------ creating " + newVmId + " --------------------\n\r" + string(out) + "\n\r"
   f.WriteString(logOut)
