@@ -19,7 +19,7 @@ func main() {
   sections := vms.GetSectionList()
   //vmCommSli := []string{}      //comm slice
 
-  var wg sync.WaitGroup
+  //var wg sync.WaitGroup
 
 
   for _, sec := range sections {
@@ -69,9 +69,10 @@ func main() {
     //lock.Lock()
     //go makeVm(vmComm, lock)
 
-    wg.Add(1)
+    //wg.Add(1)
 
-    go makeVm(newVmId, vmComm, &wg)
+    //go makeVm(newVmId, vmComm, &wg)
+    makeVm(newVmId, vmComm, &wg)
 
     //go makeVm(vmComm)
     //runtime.Gosched()
@@ -82,7 +83,7 @@ func main() {
   }
 
   //fmt.Println(vmCommSli)
-  wg.Wait()
+  //wg.Wait()
 
   fmt.Println("----------------- all finished -----------------")
   //check the new vm status

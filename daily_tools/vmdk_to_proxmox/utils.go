@@ -56,7 +56,7 @@ func makeVm(newVmId, comm string, wg *sync.WaitGroup) {
 //func makeVm(comm string) {
   //lock := &sync.Mutex{}
   //lock.Lock()
-  defer wg.Done()
+  //defer wg.Done()
 
   cmd := exec.Command(comm)
   out, _ := cmd.CombinedOutput()
