@@ -8,7 +8,6 @@ import (
   //"time"
   //"sync"
   //"runtime"
-  "sync"
 )
 
 func main() {
@@ -72,7 +71,8 @@ func main() {
     //wg.Add(1)
 
     //go makeVm(newVmId, vmComm, &wg)
-    makeVm(newVmId, vmComm, &wg)
+    //makeVm(newVmId, vmComm, &wg)
+    makeVm(newVmId, vmComm)
 
     //go makeVm(vmComm)
     //runtime.Gosched()

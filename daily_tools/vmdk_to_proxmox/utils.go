@@ -8,7 +8,6 @@ import (
   "math/rand"
   "strconv"
   //"sync"
-  "sync"
 )
 
 /**
@@ -52,7 +51,8 @@ func checkVmId(newid string, existsIds []string) string{
 run create vm command
  */
 //func makeVm(comm string, lock *sync.Mutex) {
-func makeVm(newVmId, comm string, wg *sync.WaitGroup) {
+//func makeVm(newVmId, comm string, wg *sync.WaitGroup) {
+  func makeVm(newVmId, comm string) {
 //func makeVm(comm string) {
   //lock := &sync.Mutex{}
   //lock.Lock()
