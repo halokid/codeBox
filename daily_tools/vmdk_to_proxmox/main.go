@@ -45,6 +45,7 @@ func main() {
     newVmId := getNewvmId()
 
 
+		///**
     vmComm := "qm create " + newVmId + " -net0 vmxnet3,bridge=vmbr0 -name " + sec + " -memory " +
               mem + " -sockets " + sockets + " -cores " + cores + " -bootdisk ide0 -ide0 local:" + newVmId +
               "/vm-" + newVmId  + "-disk-1.vmdk,size=" + disk + "G; " +
@@ -56,6 +57,8 @@ func main() {
               "mv ./" + sec + ".vmdk /var/lib/vz/images/" + newVmId + "/vm-" + newVmId + "-disk-1.vmdk; " +
               "sleep 3; " +
               "qm start " + newVmId
+		//**/
+
 
     fmt.Println(sockets + cores + mem + disk + mac + newVmId)
     //vmComm := "dir"   //跑完命令需要3秒
@@ -72,6 +75,7 @@ func main() {
 
     //go makeVm(newVmId, vmComm, &wg)
     //makeVm(newVmId, vmComm, &wg)
+		//vmComm := "ls; sleep 10"
     makeVm(newVmId, vmComm)
 
     //go makeVm(vmComm)
