@@ -8,12 +8,14 @@ import (
   //"time"
   //"sync"
   //"runtime"
+
+  "./utils"
 )
 
 func main() {
   // read vms from config file
   vms, err := goconfig.LoadConfigFile("./vms_all.txt")
-  CheckErr("cannot read vms file", err)
+  utils.CheckErr("cannot read vms file", err)
 
   sections := vms.GetSectionList()
   //vmCommSli := []string{}      //comm slice
@@ -23,26 +25,26 @@ func main() {
 
   for _, sec := range sections {
     sockets, err := vms.GetValue(sec, "sockets")
-    CheckErr("get sockets error", err)
+    utils.CheckErr("get sockets error", err)
     //fmt.Println(sockets)
 
     cores, err := vms.GetValue(sec, "cores")
-    CheckErr("get cores error", err)
+    utils.CheckErr("get cores error", err)
     //fmt.Println(cores)
 
     mem, err := vms.GetValue(sec, "mem")
-    CheckErr("get mem error", err)
+    utils.CheckErr("get mem error", err)
     //fmt.Println(mem)
 
     mac, err := vms.GetValue(sec, "mac")
-    CheckErr("get mac error", err)
+    utils.CheckErr("get mac error", err)
     //fmt.Println(mac)
 
     disk, err := vms.GetValue(sec, "disk")
-    CheckErr("get disk error", err)
+    utils.CheckErr("get disk error", err)
     //fmt.Println(disk)
 
-    newVmId := getNewvmId()
+    newVmId := utils.GetNewvmId()
 
 
 		///**
@@ -76,7 +78,7 @@ func main() {
     //go makeVm(newVmId, vmComm, &wg)
     //makeVm(newVmId, vmComm, &wg)
 		//vmComm := "ls; sleep 10"
-    makeVm(newVmId, vmComm)
+    utils.MakeVm(newVmId, vmComm)
 
     //go makeVm(vmComm)
     //runtime.Gosched()
