@@ -1,0 +1,16 @@
+[auto-make1]
+sockets=2
+cores=2
+mem=8000
+mac=52:71:54:AB:CD:E1
+disk=80
+ip=172.20.70.24
+
+[auto-make2]
+sockets=2
+cores=2
+mem=8000
+mac=52:71:54:AB:CD:E2
+disk=80
+ip=172.20.73.229
+

@@ -6,6 +6,7 @@ import (
   "github.com/Unknwon/goconfig"
 
   "../utils"
+  "fmt"
 )
 
 func main() {
@@ -25,7 +26,7 @@ func main() {
     } else {
       logOut = "--------------" + secIp + " FAIL ----------- \n\r"
     }
-
+    fmt.Println(logOut)
     f.WriteString(logOut)
   }
 

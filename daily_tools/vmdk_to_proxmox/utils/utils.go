@@ -64,6 +64,7 @@ func MakeVm(newVmId, comm string) {
   fmt.Println(string(out))
   f, _ := os.OpenFile("./log.txt", os.O_CREATE|os.O_APPEND, 0666)
   logOut := "------------------ creating " + newVmId + " --------------------\n\r" + string(out) + "\n\r"
+  fmt.Println(logOut)
   f.WriteString(logOut)
   f.Close()
 
