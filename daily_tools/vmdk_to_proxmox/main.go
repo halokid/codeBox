@@ -59,9 +59,9 @@ func main() {
     //**/
 
 
-    disk2, fdisk2err := vms.GetValue(sec, "disk2")
+    disk2, disk2err := vms.GetValue(sec, "disk2")
     var disk2Comm string
-    if fdisk2err == nil {
+    if disk2err == nil {
       disk2Comm = "qm set " + newVmId + " ide1 local:" + newVmId  + "/vm-" + newVmId  + "-disk-2.vmdk,size=" + disk2 + "G; "
     } else {
       disk2Comm = ""
