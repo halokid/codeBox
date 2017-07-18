@@ -5,9 +5,9 @@ import (
   "fmt"
 
   "github.com/tealeg/xlsx"
-  "github.com/Unknwon/goconfig"
+  //"github.com/Unknwon/goconfig"
 
-  "../utils"
+  //"../utils"
 )
 
 func Test_exls(t *testing.T) {
@@ -32,10 +32,10 @@ func Test_exls(t *testing.T) {
 
 
 func Test_writeIni(t *testing.T) {
-  vms, err := goconfig.LoadConfigFile("./vms_test.txt")
-  utils.CheckErr("cannot read vms file", err)
+  //vms, err := goconfig.LoadConfigFile("./vms_test.txt")
+  //utils.CheckErr("cannot read vms file", err)
 
-  sections := vms.GetSectionList()
+  //sections := vms.GetSectionList()
 }
 
 

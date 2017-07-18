@@ -36,23 +36,47 @@ func main() {
     utils.CheckErr("get mem error", err)
     //fmt.Println(mem)
 
-    mac, err := vms.GetValue(sec, "mac")
+    mac1, err := vms.GetValue(sec, "mac1")
     utils.CheckErr("get mac error", err)
     //fmt.Println(mac)
 
-    disk, err := vms.GetValue(sec, "disk")
+    disk1, err := vms.GetValue(sec, "disk1")
     utils.CheckErr("get disk error", err)
     //fmt.Println(disk)
 
     newVmId := utils.GetNewvmId()
 
+    mac2, mac2err := vms.GetValue(sec, "mac2")
+    //utils.CheckErr("get mac2 error", err)
+
+    ///**
+    var mac2Comm string
+    if mac2err == nil {
+      mac2Comm = "qm set " + newVmId + " -net1 vmxnet3='" + mac2 + "',bridge=vmbr0;"
+    } else {
+      mac2Comm = ""
+    }
+    //**/
+
+
+    disk2, fdisk2err := vms.GetValue(sec, "disk2")
+    var disk2Comm string
+    if fdisk2err == nil {
+      disk2Comm = "qm set " + newVmId + " ide1 local:" + newVmId  + "/vm-" + newVmId  + "-disk-2.vmdk,size=" + disk2 + "G; "
+    } else {
+      disk2Comm = ""
+    }
 
 		///**
     vmComm := "qm create " + newVmId + " -net0 vmxnet3,bridge=vmbr0 -name " + sec + " -memory " +
               mem + " -sockets " + sockets + " -cores " + cores + " -bootdisk ide0 -ide0 local:" + newVmId +
-              "/vm-" + newVmId  + "-disk-1.vmdk,size=" + disk + "G; " +
+              "/vm-" + newVmId  + "-disk-1.vmdk,size=" + disk1 + "G; " +
               "sleep 3; " +
-              "qm set " + newVmId + " -net0 vmxnet3='" + mac + "',bridge=vmbr0; " +
+              "qm set " + newVmId + " -net0 vmxnet3='" + mac1 + "',bridge=vmbr0; " +
+              "sleep 3; " +
+              mac2Comm +
+              "sleep 3;" +
+              disk2Comm +
               "sleep 3; " +
               "mkdir -p /var/lib/vz/images/" + newVmId + "; " +
               "sleep 3; " +
@@ -62,11 +86,11 @@ func main() {
 		//**/
 
 
-    fmt.Println(sockets + cores + mem + disk + mac + newVmId)
+    fmt.Println(sockets + cores + mem + disk1 + mac1 + newVmId)
     //vmComm := "dir"   //跑完命令需要3秒
 
     //vmCommSli = append(vmCommSli, vmComm)
-    //fmt.Println(vmComm)
+    fmt.Println(vmComm)
     //fmt.Println("---------------------------------------------------------------------------")
 
     //lock := &sync.Mutex{}
