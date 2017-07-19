@@ -1,0 +1,45 @@
+[auto-make1]
+ip = 10.86.21.139
+mem = 32
+cpu = 8
+mac1 = 00:50:56:9a:c8:39
+mac2 = 
+disk1 = 50
+disk2 = 
+
+[auto-make2]
+ip = 172.20.71.129
+mem = 64
+cpu = 6
+mac1 = 00:50:56:9a:d7:5b
+mac2 = 
+disk1 = 50
+disk2 = 
+
+[auto-make3]
+ip = 10.86.21.194
+mem = 16
+cpu = 8
+mac1 = 00:50:56:9a:35:b1
+mac2 = 
+disk1 = 50.89
+disk2 = 90.76
+
+[auto-make4]
+ip = 10.86.21.205
+mem = 64
+cpu = 12
+mac1 = 00:50:56:9a:65:de
+mac2 = 00:50:56:9a:9a:5d
+disk1 = 50
+disk2 = 
+
+[auto-make5]
+ip = 10.86.21.193
+mem = 7.9379999999999997
+cpu = 8
+mac1 = 00:50:56:9a:ff:86
+mac2 = 
+disk1 = 200
+disk2 = 
+

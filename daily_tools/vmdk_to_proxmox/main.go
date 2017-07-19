@@ -10,11 +10,12 @@ import (
   //"runtime"
 
   "./utils"
+  "strings"
 )
 
 func main() {
   // read vms from config file
-  vms, err := goconfig.LoadConfigFile("./vms_all.txt")
+  vms, err := goconfig.LoadConfigFile("./xlsxtoini/vms_all.txt")
   utils.CheckErr("cannot read vms file", err)
 
   sections := vms.GetSectionList()
@@ -24,6 +25,7 @@ func main() {
 
 
   for _, sec := range sections {
+    /**
     sockets, err := vms.GetValue(sec, "sockets")
     utils.CheckErr("get sockets error", err)
     //fmt.Println(sockets)
@@ -31,8 +33,15 @@ func main() {
     cores, err := vms.GetValue(sec, "cores")
     utils.CheckErr("get cores error", err)
     //fmt.Println(cores)
+    **/
+    cpu, err := vms.GetValue(sec, "cpu")
+    utils.CheckErr("get cpu error", err)
+    sockets := "1"
+    cores   := cpu
 
-    mem, err := vms.GetValue(sec, "mem")
+    memStr, err := vms.GetValue(sec, "mem")
+    memSli := strings.Split(".", memStr)
+    mem := memSli[0]
     utils.CheckErr("get mem error", err)
     //fmt.Println(mem)
 
@@ -62,7 +71,8 @@ func main() {
     disk2, disk2err := vms.GetValue(sec, "disk2")
     var disk2Comm string
     if disk2err == nil {
-      disk2Comm = "qm set " + newVmId + " ide1 local:" + newVmId  + "/vm-" + newVmId  + "-disk-2.vmdk,size=" + disk2 + "G; "
+      disk2Comm = "qm set " + newVmId + " ide1 local:" + newVmId  + "/vm-" + newVmId  + "-disk-2.vmdk,size=" + disk2 + "G; " +
+                  "mv ./" + sec + "-2.vmdk /var/lib/vz/images/" + newVmId + "/vm-" + newVmId + "-disk-2.vmdk; "
     } else {
       disk2Comm = ""
     }
@@ -75,12 +85,12 @@ func main() {
               "qm set " + newVmId + " -net0 vmxnet3='" + mac1 + "',bridge=vmbr0; " +
               "sleep 3; " +
               mac2Comm +
-              "sleep 3;" +
-              disk2Comm +
               "sleep 3; " +
               "mkdir -p /var/lib/vz/images/" + newVmId + "; " +
               "sleep 3; " +
               "mv ./" + sec + ".vmdk /var/lib/vz/images/" + newVmId + "/vm-" + newVmId + "-disk-1.vmdk; " +
+              "sleep 3;" +
+              disk2Comm +
               "sleep 3; " +
               "qm start " + newVmId
 		//**/
