@@ -13,7 +13,7 @@ tar -zxf /work/jboss.tar.gz -C /work/
 import os
 
 WORKDIR = "/work/"
-DOWNLINK = "http://172.21.28.168/jboss.tar.gz"
+DOWNLINK = "http://10.86.17.99/repos/download/jboss.tar.gz"
 
 
 def deply_jboss():
@@ -22,6 +22,8 @@ def deply_jboss():
     tmp = os.popen('sleep 2')
     tarres = os.popen("tar -zxf " + WORKDIR  + "jboss.tar.gz -C " + WORKDIR).read()
     print tarres
+    clearres = os.popen("rm -rf " + WORKDIR  + "jboss.tar.gz -C ").read()
+    print clearres
 
 
 if __name__ == '__main__':
