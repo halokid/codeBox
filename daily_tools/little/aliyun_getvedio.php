@@ -37,8 +37,8 @@ function compute_signature($parameters, $access_key_secret){
 function compose_url($user_params=''){
     //$timestamp=strftime("%Y-%m-%dT%H:%M:%SZ",time());
     $timestamp=gmdate("Y-m-d\TH:i:s\Z");
-    $access_key_id='LTAIA4RlLhfFz4Ja';
-    $access_key_secret='wmDdRTKgWZNLhCc0Rhe6gGKYOXoqtO';
+    $access_key_id='xxxxxxx';
+    $access_key_secret='yyyyyyyyyyy';
     $parameters = array(
             // 'Action'            =>'GetPlayInfo',//DescribeCdnService
             // 'Action'            =>'GetVideoPlayAuth',//DescribeCdnService
