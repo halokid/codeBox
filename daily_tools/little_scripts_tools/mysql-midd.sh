@@ -161,16 +161,16 @@ MySQL_Opt()
 
 InstallInnodb='y'
 
-#下载软件包到/tmp/f2c/
-mkdir -p /tmp/f2c
-cd /tmp/f2c
+#下载软件包到/tmp//
+mkdir -p /tmp/xxx
+cd /tmp/xxx
 /usr/bin/wget http://xxxxxx/repos/download/tools/mysql/mysql-5.7.18-linux-glibc2.5-x86_64.tar.gz
 Mysql_Ver='mysql-5.7.18-linux-glibc2.5-x86_64'
 
 #解压软件包
 rm -f /etc/my.cnf
 cd /usr/local
-tar zxvf /tmp/f2c/${Mysql_Ver}.tar.gz
+tar zxvf /tmp/xxx/${Mysql_Ver}.tar.gz
 ln -s ${Mysql_Ver} mysql
 export PATH=$PATH:/usr/local/mysql/bin
 
