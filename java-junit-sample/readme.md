@@ -1,3 +1,7 @@
+
+Junit进行测试的例子， 这个还是用了main方法，并没有进行单元测试
+
+
 用 javac 编译 MessageUtil、Test case 和 Test Runner 类。
 
 C:\JUNIT_WORKSPACE>javac MessageUtil.java TestJunit.java TestRunner.java
