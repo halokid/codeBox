@@ -3,32 +3,32 @@
 
 
 '''
-¹¦ÄÜ½éÉÜ:
-ÓÃÓÚjenkins×Ô¶¯¹¹½¨Ö®ºó£¬°Ñ¹¹½¨³É¹û²¿Êğµ½k8sÉÏµÄÂß¼­Á÷³Ì£¬ÔÚjenkinsµÄjob¹¹½¨ºóÖ´ĞĞµÄshellÖĞµ÷ÓÃ
+åŠŸèƒ½ä»‹ç»:
+ç”¨äºjenkinsè‡ªåŠ¨æ„å»ºä¹‹åï¼ŒæŠŠæ„å»ºæˆæœéƒ¨ç½²åˆ°k8sä¸Šçš„é€»è¾‘æµç¨‹ï¼Œåœ¨jenkinsçš„jobæ„å»ºåæ‰§è¡Œçš„shellä¸­è°ƒç”¨
 
-Ê¹ÓÃ·½·¨£º
+ä½¿ç”¨æ–¹æ³•ï¼š
 ./jenkins_k8s_deploy.py  $app_name $image_name  $deploy_name
 
-1. $app_name ¹¹½¨µÄappµÄÃû³Æ
-2. $image_name Éú³ÉµÄdocker image µÄÃû³Æ
-3. $deploy_name ²¿ÊğÔÚ k8s ÉÏdeploy µÄÃû³Æ
+1. $app_name æ„å»ºçš„appçš„åç§°
+2. $image_name ç”Ÿæˆçš„docker image çš„åç§°
+3. $deploy_name éƒ¨ç½²åœ¨ k8s ä¸Šdeploy çš„åç§°
 
 
-´ó¸ÅµÄshellÁ÷³ÌÈçÏÂ:
+å¤§æ¦‚çš„shellæµç¨‹å¦‚ä¸‹:
 ------------------------------------------------------
 
 cd ./xxshop/srv/auth
 
-#±àÒë³ÌĞò
+#ç¼–è¯‘ç¨‹åº
 go build -o xxshop-srv-auth
 
-#Éú³ÉÈİÆ÷,Ã¿Ò»´ÎĞÂµÄ¹¹½¨¶¼ÒªÉú³ÉÒ»¸öĞÂµÄimage
+#ç”Ÿæˆå®¹å™¨,æ¯ä¸€æ¬¡æ–°çš„æ„å»ºéƒ½è¦ç”Ÿæˆä¸€ä¸ªæ–°çš„image
 docker build -t 10.86.20.57:5000/micro-xxshop-srv-auth:v$BUILD_NUMBER .
 
 #push image
 docker push 10.86.20.57:5000/micro-xxshop-srv-auth:v$BUILD_NUMBER
 
-#ÓÃĞÂµÄimage¸üĞÂk8sµÄdeploy
+#ç”¨æ–°çš„imageæ›´æ–°k8sçš„deploy
 /root/local/bin/kubectl set image deploy/micro-xxshop-srv-auth micro-xxshop-srv-auth=10.86.20.57:5000/micro-xxshop-srv-auth:v$BUILD_NUMBER -s http://10.86.20.57:8080
 
 -------------------------------------------------------
@@ -43,9 +43,20 @@ IMAGE_NAME    =   sys.argv[2]
 DEPLOY_NAME   =   sys.argv[3]
 
 
-GOPATH        =   "/usr/local/go/bin/go"
+GOBIN        =   "/usr/local/go/bin/go"
 KUBECTL       =   "/root/local/bin/kubectl"
 
+
+class Jkd(object):
+  def __init__(self, appName, imageName, deployName):
+    self.appName = appName
+    self.imageName = imageName
+    self.deployName = deployName
+    
+    
+  def buildApp(self):
+    r = os.popen(GOBIN + "build -o" + self.appName).read()
+  
 
 
 
