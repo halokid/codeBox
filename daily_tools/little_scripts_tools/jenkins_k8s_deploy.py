@@ -43,8 +43,10 @@ IMAGE_NAME    =   sys.argv[2]
 DEPLOY_NAME   =   sys.argv[3]
 
 
-GOBIN        =   "/usr/local/go/bin/go"
+GOBIN         =   "/usr/local/go/bin/go"
 KUBECTL       =   "/root/local/bin/kubectl"
+# DEPLOY_FILES   =   "./k8s_deploy/" + APP_NAME + "-srv"
+K8S_MASTER    =   "http://10.86.20.57:8080"
 
 
 class Jkd(object):
@@ -75,9 +77,25 @@ class Jkd(object):
     """
     push image
     """
-    r = os.popen("")
+    r = os.popen("docker push " + self.imageName).read()
+    print "push new image result: " + r
   
   
+  def setDeploy(self):
+    """
+    deploy to k8s
+    作为一个 go-micro 的服务来说， 要部署两个deploy
+    
+    deploy 1：  srv本身的image
+    deploy 2：  srv的 api image
+    
+    其中两个deploy 都是注册到 consul 的
+    """
+    r = os.popen(KUBECTL + " get deploy -s " + K8S_MASTER + " grep " + APP_NAME + " | awk '{print $1}'").read()
+    if r == "":
+      print "deploy不存在， 创建中............"
+    else:
+      print "deploy存在， scale deploy的image.............."
 
 
 
