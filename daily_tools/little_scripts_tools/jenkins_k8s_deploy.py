@@ -55,7 +55,28 @@ class Jkd(object):
     
     
   def buildApp(self):
+    """
+    编译go程序
+    """
     r = os.popen(GOBIN + "build -o" + self.appName).read()
+    print "go build result:   " + r
+    
+  
+  
+  def makeImage(self):
+    """
+    生成新的image
+    """
+    r = os.popen("docker build -t " + self.imageName + " .").read()
+    print "make new image result: " + r
+      
+      
+  def pushImage(self):
+    """
+    push image
+    """
+    r = os.popen("")
+  
   
 
 
