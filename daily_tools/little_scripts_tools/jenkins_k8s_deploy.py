@@ -91,11 +91,13 @@ class Jkd(object):
     
     其中两个deploy 都是注册到 consul 的
     """
-    r = os.popen(KUBECTL + " get deploy -s " + K8S_MASTER + " grep " + APP_NAME + " | awk '{print $1}'").read()
+    r = os.popen(KUBECTL + " get deploy -s " + K8S_MASTER + " grep " + self.appName + " | awk '{print $1}'").read()
     if r == "":
       print "deploy不存在， 创建中............"
+      r = os.popen( KUBECTL + " create -f " + self.appName + ".yaml " + "-s" + K8S_MASTER).read()
     else:
       print "deploy存在， scale deploy的image.............."
+      r = os.popen( KUBECTL + " set image deploy/" + self.appName + " " + self.appName + "=" + self.imageName + "-s" + K8S_MASTER).read()
 
 
 
