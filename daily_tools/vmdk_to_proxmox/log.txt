@@ -1,0 +1,445 @@
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 7887 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 8081 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 7887 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 8081 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 7887 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 7887 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 8081 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 7887 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 8081 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 7887 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 8081 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 7887 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 8081 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 7887 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 8081 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 7887 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 8081 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 7887 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 7887 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 8081 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 7887 --------------------
+log.txt
+main.go
+main_test.go
+utils.go
+utils_test.go
+vmdk_to_proxmox
+vms_all.txt
+
+------------------ creating 8081 --------------------
+/bin/bash: qm: command not found
+/bin/bash: qm: command not found
+mv: cannot stat ‘./auto-make1.vmdk’: No such file or directory
+/bin/bash: qm: command not found
+
+------------------ creating 7887 --------------------
+/bin/bash: qm: command not found
+/bin/bash: qm: command not found
+mv: cannot stat ‘./auto-make2.vmdk’: No such file or directory
+/bin/bash: qm: command not found
+
+------------------ creating 8081 --------------------
+
+------------------ creating 7887 --------------------
+
+------------------ creating 8081 --------------------
+/bin/bash: qm: command not found
+/bin/bash: qm: command not found
+mv: cannot stat ‘./auto-make1.vmdk’: No such file or directory
+/bin/bash: qm: command not found
+
+------------------ creating 7887 --------------------
+/bin/bash: qm: command not found
+/bin/bash: qm: command not found
+mv: cannot stat ‘./auto-make2.vmdk’: No such file or directory
+/bin/bash: qm: command not found
+
+
