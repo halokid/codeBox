@@ -1,0 +1,8 @@
+{
+    "workbench.colorTheme": "Solarized Dark",
+    "vim.disableAnnoyingNeovimMessage": true,
+    "php.validate.executablePath": "E://xampp//php//php.exe",
+    "workbench.statusBar.visible": true,
+    "window.menuBarVisibility": "default",
+    "workbench.activityBar.visible": false
+}
