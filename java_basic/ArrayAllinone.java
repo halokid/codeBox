@@ -2,7 +2,7 @@
  * @Author: r00x.tactx 
  * @Date: 2017-10-15 11:48:46 
  * @Last Modified by: xx.tactx
- * @Last Modified time: 2017-10-15 15:31:47
+ * @Last Modified time: 2017-10-15 15:41:13
 
    Top 10 Methods for Java Arrays
  */
@@ -35,6 +35,18 @@ public class ArrayAllinone {
 
   }
 
+
+  public static void erweiArray() {
+    int[] arr1 = {1, 2, 3, 4, 5};
+    int[] arr2 = {6, 7, 8, 9, 10};
+
+    // ArrayList<int[]> = [arr1, arr2];
+
+    List<int[]> al = new ArrayList<int[]>();
+    al.add(arr1);
+    al.add(arr2);
+
+  }
 
 
   public static void outputArray() {
