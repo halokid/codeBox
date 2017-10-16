@@ -46,3 +46,15 @@ Network Trash Folder
 Temporary Items
 .apdisk
 /.idea
+/daily_tools/SyncTags/src/main/java/com/inif/数据库连接.java
+/daily_tools/img_cutter/imgcutter/*.exe
+/daily_tools/.idea
+/daily_tools/SyncTags/target/classes/com/inif/*.class
+/java-junit-danyuanTest/.idea
+/java-junit-danyuanTest/target/classes/r00txx/danyuan/test/service/impl/*.class
+/java-junit-sample/.idea
+/java-junit-danyuanTest/*.iml
+/java-junit-danyuanTest/target/test-classes/r00txx/danyuan/test/service/impl/*.class
+/daily_tools/SyncTags/*.iml
+/java-junit-sample/out/production/java-junit-sample/*.class
+/java-junit-sample/*.iml
