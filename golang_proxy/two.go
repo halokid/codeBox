@@ -40,7 +40,7 @@ func handle(server *net.TCPConn) {
 		io.CopyBuffer(server, client, buf)
 	}()
 
-	buf := make([]byte, 2018)
+	buf := make([]byte, 2048)
 	io.CopyBuffer(client, server, buf)
 
 }
