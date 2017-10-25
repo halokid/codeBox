@@ -30,6 +30,17 @@ class Danli
 
 }
 
-
+//首先获取单例是获取这个类的单例，要记住是这个类的单例
 $danli = Danli::getInstance();
+
+//然后再用这个类的单例去调用这个类的方法
 $danli->test();
+
+
+
+
+
+
+
+
+
