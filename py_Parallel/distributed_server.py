@@ -1,6 +1,6 @@
 
 
-#管理分布式协作manager对象
+# 管理分布式协作manager对象
 def get_manager():
     '''创建服务端manager对象.
     '''
@@ -11,8 +11,9 @@ def get_manager():
     jobid_queue = Queue()
     JobManager.register('get_jobid_queue', callable=lambda: jobid_queue)
     # 创建列表代理类，并将其共享再网络中
-    tofs = [None]*N
-    JobManager.register('get_tofs_list', callable=lambda: tofs, proxytype=ListProxy)
+    tofs = [None] * N
+    JobManager.register(
+        'get_tofs_list', callable=lambda: tofs, proxytype=ListProxy)
     # 将分压参数共享到网络中
     JobManager.register('get_pCOs', callable=lambda: pCOs, proxytype=ListProxy)
     JobManager.register('get_pO2s', callable=lambda: pCOs, proxytype=ListProxy)
@@ -21,20 +22,17 @@ def get_manager():
     return manager
 
 
-
-#进行任务分配
+# 进行任务分配
 def fill_jobid_queue(manager, nclient):
     indices = range(N)
-    interval = N/nclient
+    interval = N / nclient
     jobid_queue = manager.get_jobid_queue()
     start = 0
     for i in range(nclient):
-        jobid_queue.put(indices[start: start+interval])
+        jobid_queue.put(indices[start: start + interval])
         start += interval
     if N % nclient > 0:
         jobid_queue.put(indices[start:])
-
-
 
 
 def run_server():
@@ -54,6 +52,3 @@ def run_server():
             queue_size = shared_job_queue.qsize()
             print "Job picked..."
     return manager
-
-
-
