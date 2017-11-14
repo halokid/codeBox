@@ -1,3 +1,5 @@
+#coding=utf-8
+
 '''
 python 因为 GIL 的关系，不能实现多线程的并行， 目前只可以用多进程的并行
 
@@ -25,6 +27,7 @@ def task(pO2):
     #omit code...
 
 if "__main__" == __name__:
+  '''
   try:
     start = time.time()
 
@@ -35,5 +38,6 @@ if "__main__" == __name__:
     t = end - start
   finally:
     #收集计算的结果并进行处理绘图
+    '''
 
 
