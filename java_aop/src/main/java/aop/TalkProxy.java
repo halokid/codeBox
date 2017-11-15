@@ -6,6 +6,8 @@ package aop;
 
 /**
  * 代理主题角色，内部包含对真实主题的引用， 并且提供和真实主题角色相同的接口
+ *
+ * 代理类的要点就是， 每一个业务类都要有一个属于自己的代理类
  */
 public class TalkProxy implements ITalk {
 
