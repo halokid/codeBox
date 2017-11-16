@@ -35,4 +35,5 @@ public class PeopleTalk implements ITalk {
   public void setAge(String age) {
     this.age = age;
   }
+
 }
