@@ -11,11 +11,13 @@ public class ProxyPattern {
   public static void main(String[] args) {
     //不需要执行额外方法的
     ITalk people = new PeopleTalk("AOP", "18");
-    people.talk("no proxy test");
+    people.talk("no proxy test"); //这里的参数只有一个
     System.out.println("----------------------------------");
 
     //需要执行额外的方法的（切面）
     TalkProxy talker = new TalkProxy(people);
-    talker.talk("proxy test", "代理");
+    talker.talk("proxy test", "代理");    //参数有两个
+    System.out.println(".......");
+    talker.talk("xxx");
   }
 }
