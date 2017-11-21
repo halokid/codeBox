@@ -49,6 +49,9 @@ Temporary Items
 /ML-AI-sample/.vscode
 /java_basic/*.class
 /py_Parallel/.idea
+<<<<<<< HEAD
+/java_aop/.idea
+=======
 /py_Parallel/process_allinone/*.pyc
 /py_Parallel/thread_allinone/__pycache__/*.pyc
 /java_aop/.idea
@@ -66,7 +69,11 @@ Temporary Items
 /java-junit-sample/*.iml
 /java-junit-sample/.idea
 /daily_tools/SyncTags/src/main/java/com/inif/数据库连接.java
+<<<<<<< HEAD
 /java_aop/*.iml
 /daily_tools/jiankongbao/.idea
 /daily_tools/jiankongbao/*.iml
 /daily_tools/jiankongbao/jiankongbao/*.exe
+=======
+>>>>>>> 2f15e2490f29f9d1f35be53e4e05ba51a457abb4
+>>>>>>> 2a3f6f5341f23b9d2bd1bb8551b139f0a18aeb6a
