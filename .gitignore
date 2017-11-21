@@ -66,3 +66,7 @@ Temporary Items
 /java-junit-sample/*.iml
 /java-junit-sample/.idea
 /daily_tools/SyncTags/src/main/java/com/inif/数据库连接.java
+/java_aop/*.iml
+/daily_tools/jiankongbao/.idea
+/daily_tools/jiankongbao/*.iml
+/daily_tools/jiankongbao/jiankongbao/*.exe
