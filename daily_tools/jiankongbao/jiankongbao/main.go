@@ -21,7 +21,7 @@ func jkbCallback(w http.ResponseWriter, r *http.Request) {
   task_id := post_data["task_id"]
   fault_time := post_data["fault_time"]
   token := post_data["token"][0]
-  mytoken := "f18e91f008005868d4d1a5ae54020239"
+  mytoken := "649f4e478b67db45906e92e29bb51fe5"
 
   check_token := utils.SetMd5(string(msg_id[0]) + string(task_id[0]) + string(fault_time[0]) + string(mytoken))
   fmt.Println("\n\r---------------------------------------------------------------------------------")
