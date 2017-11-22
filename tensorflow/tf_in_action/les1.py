@@ -15,3 +15,6 @@ filled_tsr = tf.fill([row_dim, col_dim], 42)
 
 #用已知常数张量创建一个张量
 constant_tsr = tf.constant([1, 2, 3])
+
+
+
