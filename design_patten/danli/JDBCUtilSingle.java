@@ -1,4 +1,4 @@
-
+import java.sql.*;
 
 public final class JDBCUtilSingle {
   static String url = "jdbc://mysql:///test";
@@ -28,7 +28,7 @@ public final class JDBCUtilSingle {
     try {
       Class.forName("com.mysql.jdbc.Driver");
     } catch (ClassNotFoundException e) {
-      e.printTrace();
+      e.printStackTrace();
     }
   }
 
@@ -36,13 +36,12 @@ public final class JDBCUtilSingle {
     try {
       conn = DriverManager.getConnection(url, name, password);
     } catch (SQLException e) {
-      e.printTrace();
+      e.printStackTrace();
     }
     return conn;
   }
 
-  public void closeConnection(Result rs, Statement statement, Connection con) {
-    public void closeConnection (ResultSet rs, Statement statement, Connection con){
+  public void closeConnection(ResultSet rs, Statement statement, Connection con) {
       try {
         if (rs != null) {
           rs.close();
@@ -69,5 +68,3 @@ public final class JDBCUtilSingle {
     }
   }
 
-
-}
