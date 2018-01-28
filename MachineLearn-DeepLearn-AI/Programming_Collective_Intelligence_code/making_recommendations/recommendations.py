@@ -1,4 +1,4 @@
-#conding=utf-8
+#coding=utf-8
 
 critics={'Lisa Rose': {'Lady in the Water': 2.5, 'Snakes on a Plane': 3.5,
                        'Just My Luck': 3.0, 'Superman Returns': 3.5, 'You, Me and Dupree': 2.5,
@@ -40,7 +40,7 @@ def sim_distance(prefs, person1, person2):
 #皮尔逊相关度
 
 
-
+sim_person = None
 #推荐物品
 def getRecommendations(prefs, person, similarity=sim_person):
   """
@@ -65,6 +65,51 @@ def getRecommendations(prefs, person, similarity=sim_person):
         totals[item] += prefs[other][item] * sim
         sim_sums.setdefault(item, 0)
         sim_sums[item] += sim
+
+
+
+def getRecommandItems (prefs, item_match, user):
+  """
+
+  :param prefs:
+  :param item_match:
+  :param user:
+  :return:
+  """
+  user_ratings = prefs[user]
+  scores = {}
+  total_sim = {}
+
+  for (item, rating) in user_ratings.items():
+    for (similartity, item2) in item_match[item]:
+      if item2 in user_ratings: continue
+
+      scores.setdefault(item2, 0)
+      scores[item2] += similartity * rating
+
+      total_sim.setdefault(item2, 0)
+      scores[item2] += similartity
+
+    rankings = [ (scores / total_sim[item], item) for item, scores in scores.items() ]
+
+    rankings.sort()
+    rankings.reverse()
+    return rankings
+
+
+if __name__ == "__main__":
+  print getRecommandItems.__doc__
+
+
+
+
+
+
+
+
+
+
+
 
 
 
