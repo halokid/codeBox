@@ -3,6 +3,10 @@
 import feedparser
 import re
 
+
+def debug(ist):
+  print ist
+
 def get_word_counts(url):
   """
   :param url:   feed url
@@ -26,6 +30,7 @@ def get_word_counts(url):
 
 
 
+#返回所有匹配的 word 的一个列表
 def getwords(html):
   txt = re.compile(r'<[^>] +>').sub('', html)
   words = re.compile(r'[^A-Z^a-z]+').split(txt)
@@ -46,6 +51,49 @@ for feedurl in feedlist:
     apcount.setdefault(word, 0)   #是计算包含这些单词的博客数目
     if count > 1:
       apcount[word] += 1
+
+debug(wordcounts)
+print "--------------------------------------------------\n"
+debug(apcount)
+
+
+#某个word 在所有的 feedlist 里面出现的概率比
+wordlist = []
+for w, bc in apcount.items():
+  frac = float(bc) / len(feedlist)
+  print frac
+  if frac > 0.1 and frac < 0.5:
+    wordlist.append(w)
+
+debug(wordlist)
+
+
+out = file('blogdata.txt', 'w')
+out.write('Blog')
+for word in wordlist:
+  out.write('\t%s' % word)
+out.write('\n')
+
+for blog, wc in wordcounts.items():
+  out.write(blog)
+  for word in wordlist:
+    if word in wc: out.write('\t%d' % wc[word])
+    else: out.write('\t0')
+  out.write('\n')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
