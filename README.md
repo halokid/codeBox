@@ -18,6 +18,11 @@ code box, some code day-to-day
 
 * automic_algorithm 原子性自增算法范例
 
+  ​
+
+
+* limiting_qps 限流算法范例
+
 
 
 
