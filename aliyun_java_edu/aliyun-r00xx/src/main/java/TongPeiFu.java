@@ -3,6 +3,8 @@
  * 通配符
  *  ? extends, 设置泛型上限, 比如 ? extends int, 表示只能设置 integer 类型或其子类
  *  ? super, 设置泛型下限, 比如 ? super string, 表示只能设置 string 类型或其父类
+ *
+ *  通配符的核心功能在于， 能接受一切但是不能够修改！！！！
  */
 
 class Message<T> {
