@@ -1,5 +1,6 @@
 /**
  * Created by wist on 2018/2/18.
+ * 可变参数
  */
 public class ChangeableParams {
   public static int add(int ... data) {
