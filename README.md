@@ -23,6 +23,16 @@ code box, some code day-to-day
 
 * limiting_qps 限流算法范例
 
+  ​
+
+* make_python_package  制造一个 python package的范例
+
+  ​
+
+* jupyter_sample  jupyter一些范例文档
+
+
+
 
 
 
