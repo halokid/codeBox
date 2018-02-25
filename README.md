@@ -34,6 +34,11 @@ code box, some code day-to-day
 
 
 
+* golang_natural_blockchain  golang写的一个原生区块链范例
+
+
+
+
 
 
 
