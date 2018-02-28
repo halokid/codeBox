@@ -9,96 +9,211 @@ import (
   "net/http"
   "os"
   "time"
+
   "github.com/davecgh/go-spew/spew"
   "github.com/gorilla/mux"
   "github.com/joho/godotenv"
 )
 
-
-
-//区块链的数据模型
+// Block represents each 'item' in the blockchain
 type Block struct {
-  index             int         //这个块在整个链中的位置
-  timestamp         string      //生成块的时间戳
-  BPM               int         //每分钟的心跳数， 也就是心率, 这个只是这个范例里面的示例数据而已
-  hash              string      //是这个块通过SHA256算法生成的散列值
-  prev_hash         string      //代表前一个块的 SHA256 散列值
+  Index     int
+  Timestamp string
+  BPM       int
+  Hash      string
+  PrevHash  string
+}
+
+// Blockchain is a series of validated Blocks
+var Blockchain []Block
+
+// Message takes incoming JSON payload for writing heart rate
+type Message struct {
+  BPM int
+}
+
+//func main() {
+//  err := godotenv.Load()
+//  if err != nil {
+//    log.Fatal(err)
+//  }
+//
+//  go func() {
+//    t := time.Now()
+//    genesisBlock := Block{0, t.String(), 0, "", ""}
+//    spew.Dump(genesisBlock)
+//    Blockchain = append(Blockchain, genesisBlock)
+//  }()
+//  log.Fatal(run())
+//
+//}
+
+
+
+func main() {
+  err := godotenv.Load()
+  if err != nil {
+    log.Fatal(err)
+  }
+
+  go func() {
+    t := time.Now()
+    genesis_block := Block{0, t.String(), 0, "", ""}
+    spew.Dump(genesis_block)
+    Blockchain = append(Blockchain, genesis_block)
+  }()
+
+  log.Fatal(run())
+}
+
+// web server
+func run() error {
+  mux := makeMuxRouter()
+  httpAddr := os.Getenv("ADDR")
+  log.Println("Listening on ", os.Getenv("ADDR"))
+  s := &http.Server{
+    Addr:           ":" + httpAddr,
+    Handler:        mux,
+    ReadTimeout:    10 * time.Second,
+    WriteTimeout:   10 * time.Second,
+    MaxHeaderBytes: 1 << 20,
+  }
+
+  if err := s.ListenAndServe(); err != nil {
+    return err
+  }
+
+  return nil
+}
+
+// create handlers
+func makeMuxRouter() http.Handler {
+  muxRouter := mux.NewRouter()
+  muxRouter.HandleFunc("/", handleGetBlockchain).Methods("GET")
+  muxRouter.HandleFunc("/", handleWriteBlock).Methods("POST")
+  return muxRouter
+}
+
+// write blockchain when we receive an http request
+func handleGetBlockchain_test(w http.ResponseWriter, r *http.Request) {
+  bytes, err := json.MarshalIndent(Blockchain, "", "  ")
+  if err != nil {
+    http.Error(w, err.Error(), http.StatusInternalServerError)
+    return
+  }
+  io.WriteString(w, string(bytes))
 }
 
 
-//定义一个区块链的全局变量
-var blockchain []Block
+func handleGetBlockchain(w http.ResponseWriter, r *http.Request) {
+  bytes, err := json.MarshalIndent(Blockchain, "", " ")
+  if err != nil {
+    http.Error(w, err.Error(), http.StatusInternalServerError)
+    return
+  }
+  io.WriteString(w, string(bytes))
+}
+
+// takes JSON payload as an input for heart rate (BPM)
+func handleWriteBlock(w http.ResponseWriter, r *http.Request) {
+  var m Message
+
+  decoder := json.NewDecoder(r.Body)
+  if err := decoder.Decode(&m); err != nil {
+    respondWithJSON(w, r, http.StatusBadRequest, r.Body)
+    return
+  }
+  defer r.Body.Close()
+
+  newBlock, err := generateBlock(Blockchain[len(Blockchain)-1], m.BPM)
+  if err != nil {
+    respondWithJSON(w, r, http.StatusInternalServerError, m)
+    return
+  }
+  if isBlockValid(newBlock, Blockchain[len(Blockchain)-1]) {
+    newBlockchain := append(Blockchain, newBlock)
+    replaceChain(newBlockchain)
+    spew.Dump(Blockchain)
+  }
+
+  respondWithJSON(w, r, http.StatusCreated, newBlock)
+
+}
+
+func respondWithJSON_test(w http.ResponseWriter, r *http.Request, code int, payload interface{}) {
+  response, err := json.MarshalIndent(payload, "", "  ")
+  if err != nil {
+    w.WriteHeader(http.StatusInternalServerError)
+    w.Write([]byte("HTTP 500: Internal Server Error"))
+    return
+  }
+  w.WriteHeader(code)
+  w.Write(response)
+}
 
 
-//计算给定数据的SHA256 的散列值
+func respondWithJSON(w http.ResponseWriter, r *http.Request, code int, payload interface{}) {
+  response, err := json.MarshalIndent(payload, "", " ")
+  if err != nil {
+    w.WriteHeader(http.StatusInternalServerError)
+    w.Write([]byte("HTTP 500: ERROR"))
+    return
+  }
+  w.WriteHeader(code)
+  w.Write(response)
+}
+
+// make sure block is valid by checking index, and comparing the hash of the previous block
+func isBlockValid(newBlock, oldBlock Block) bool {
+  if oldBlock.Index+1 != newBlock.Index {
+    return false
+  }
+
+  if oldBlock.Hash != newBlock.PrevHash {
+    return false
+  }
+
+  if calculateHash(newBlock) != newBlock.Hash {
+    return false
+  }
+
+  return true
+}
+
+// make sure the chain we're checking is longer than the current blockchain
+func replaceChain(newBlocks []Block) {
+  if len(newBlocks) > len(Blockchain) {
+    Blockchain = newBlocks
+  }
+}
+
+// SHA256 hasing
 func calculateHash(block Block) string {
-  record := string(block.index) + block.timestamp + string(block.BPM) + block.prev_hash
+  record := string(block.Index) + block.Timestamp + string(block.BPM) + block.PrevHash
   h := sha256.New()
   h.Write([]byte(record))
   hashed := h.Sum(nil)
   return hex.EncodeToString(hashed)
 }
 
+// create a new block using previous block's hash
+func generateBlock(oldBlock Block, BPM int) (Block, error) {
 
-//生成一个区块
-func generateBlock(old_block Block, BPM int) (Block, error) {
-  var new_block Block
+  var newBlock Block
+
   t := time.Now()
 
-  new_block.index = old_block.index + 1
-  new_block.timestamp = t.String()
-  new_block.BPM = BPM
-  new_block.prev_hash = old_block.hash
-  new_block.hash = calculateHash(new_block)
-  return new_block, nil
+  newBlock.Index = oldBlock.Index + 1
+  newBlock.Timestamp = t.String()
+  newBlock.BPM = BPM
+  newBlock.PrevHash = oldBlock.Hash
+  newBlock.Hash = calculateHash(newBlock)
+
+  return newBlock, nil
 }
 
 
 
-//校验一个区块是否被篡改， 是否正确
-func isBlockValid(new_block, old_block Block) bool {
-  if old_block.index + 1 != new_block.index {
-    return false
-  }
-  if old_block.hash != new_block.prev_hash {
-    return false
-  }
-  if calculateHash(new_block) != new_block.hash {
-    return false
-  }
-  return true
-}
-
-
-/**
-更新某个区块链为最新的链， 因为区块链是会储存在每一个计算节点上的，有一些计算节点因为网络问题或者其他原因，没有
-更新到最新的区块链， 所以我们在某个区块链上进行一些操作的时候， 需要把本地的区块链的数据更新到最新，不然会有数据的不同步
-**/
-func replaceChain(new_blocks []Block) {
-  if len(new_blocks) > len(blockchain) {
-    blockchain = new_blocks
-  }
-}
-
-
-func run() error {
-  mux := makeMuxRouter()
-  http_addr := os.Getenv("ADDR")
-  log.Println("listening on ", os.Getenv("ADDR"))
-
-  s := &http.Server{
-    Addr:             ":" + http_addr,
-    Handler:          mux,
-    ReadTimeout:      10 * time.Second,
-    WriteTimeout:     10 * time.Second,
-    MaxHeaderBytes:   1 << 20,    //向左位移， 2的20次方
-  }
-
-  if err := s.ListenAndServe(); err != nil {
-    return err
-  }
-  return nil
-}
 
 
 
