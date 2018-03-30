@@ -15,6 +15,12 @@ code box, some code day-to-day
 
      ​
 
+     新起一个独立的 repo专门作为devops tools的 
+
+     https://github.com/r00tjimmy/devops-excellent-tools
+
+     ​
+
 
 * automic_algorithm 原子性自增算法范例
 
