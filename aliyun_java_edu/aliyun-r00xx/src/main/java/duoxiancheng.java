@@ -4,6 +4,7 @@
 
 
 class MyThread extends Thread {     // 是一个线程的主类
+  //fixme: 这个问题存在一个单继承的坏处
   private String title;
   public MyThread(String title) {
     this.title = title;
