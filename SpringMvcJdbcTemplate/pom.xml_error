@@ -64,8 +64,13 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>		
 		</dependency>
+        <dependency>
+            <groupId>net.codejava.spring</groupId>
+            <artifactId>SpringMvcJdbcTemplate</artifactId>
+            <version>1.0</version>
+        </dependency>
 
-	</dependencies>
+    </dependencies>
 
 	<build>
 		<finalName>SpringMvcJdbcTemplate</finalName>
