@@ -1,0 +1,12 @@
+{
+	"color_scheme": "Packages/Color Scheme - Default/Zenburnesque.tmTheme",
+	"font_size": 11,
+	"ignored_packages":
+	[
+	],
+	"word_wrap": true,
+	"vintage_ctrl_keys": true,
+	"update_check": false,
+	"font_size": 11.0,
+	"hide_minimap": true
+}

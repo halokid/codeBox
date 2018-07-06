@@ -1,0 +1,7 @@
+1. Package Control安装
+
+2. ConvertToUTF8　　支持 GBK, BIG5, EUC-KR, EUC-JP, Shift_JIS 等编码的插件
+
+3. Bracket Highlighter　　用于匹配括号，引号和html标签。对于很长的代码很有用。安装好之后，不需要设置插件会自动生效
+
+4. Emmet(Zen Coding)　　快速生成HTML代码段的插件，强大到无与伦比，不知道的请自行google
