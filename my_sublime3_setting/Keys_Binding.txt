@@ -3,4 +3,5 @@
 	{ "keys": ["ctrl+k"], "command": "move", "args": {"by": "lines", "forward": false} },
 	{ "keys": ["ctrl+j"], "command": "move", "args": {"by": "lines", "forward": true} },
 	{ "keys": ["alt+`"], "command": "show_overlay", "args": {"overlay": "goto", "text": "@"} },
+  { "keys": ["alt+p"], "command": "toggle_side_bar" },
 ]

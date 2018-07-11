@@ -1,12 +1,20 @@
 {
-	"color_scheme": "Packages/Color Scheme - Default/Zenburnesque.tmTheme",
-	"font_size": 11,
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Palenight.tmTheme",
+	"font_face": "Consolas",
+	"font_size": 11.0,
+	"hide_minimap": true,
 	"ignored_packages":
 	[
 	],
-	"word_wrap": true,
-	"vintage_ctrl_keys": true,
+	"show_encoding": true,
+	"show_line_endings": true,
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
 	"update_check": false,
-	"font_size": 11.0,
-	"hide_minimap": true
+	"vintage_ctrl_keys": true,
+	"word_wrap": true,
+  "caret_extra_top": true,
+  "caret_extra_bottom": 1,
+  "caret_extra_width": 1,
+  "caret_style": "smooth",
 }
