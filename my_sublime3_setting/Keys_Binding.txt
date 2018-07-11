@@ -4,4 +4,6 @@
 	{ "keys": ["ctrl+j"], "command": "move", "args": {"by": "lines", "forward": true} },
 	{ "keys": ["alt+`"], "command": "show_overlay", "args": {"overlay": "goto", "text": "@"} },
   { "keys": ["alt+p"], "command": "toggle_side_bar" },
+  { "keys": ["ctrl+left"], "command": "focus_group", "args": { "group": 0 } },
+  { "keys": ["ctrl+right"], "command": "focus_group", "args": { "group": 1 } },
 ]
