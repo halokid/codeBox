@@ -1,9 +1,11 @@
 [
-	{ "keys": ["ctrl+u"], "command": "move", "args": {"by": "pages", "forward": false} },
-	{ "keys": ["ctrl+k"], "command": "move", "args": {"by": "lines", "forward": false} },
-	{ "keys": ["ctrl+j"], "command": "move", "args": {"by": "lines", "forward": true} },
-	{ "keys": ["alt+`"], "command": "show_overlay", "args": {"overlay": "goto", "text": "@"} },
+  { "keys": ["ctrl+u"], "command": "move", "args": {"by": "pages", "forward": false} },
+  { "keys": ["ctrl+k"], "command": "move", "args": {"by": "lines", "forward": false} },
+  { "keys": ["ctrl+j"], "command": "move", "args": {"by": "lines", "forward": true} },
+  { "keys": ["alt+`"], "command": "show_overlay", "args": {"overlay": "goto", "text": "@"} },
   { "keys": ["alt+p"], "command": "toggle_side_bar" },
   { "keys": ["ctrl+left"], "command": "focus_group", "args": { "group": 0 } },
   { "keys": ["ctrl+right"], "command": "focus_group", "args": { "group": 1 } },
+  { "keys": ["ctrl+tab"], "command": "next_view" },
+  { "keys": ["ctrl+shift+tab"], "command": "prev_view" },
 ]
