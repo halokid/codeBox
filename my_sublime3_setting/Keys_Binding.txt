@@ -11,4 +11,10 @@
   { "keys": ["ctrl+alt+shift+right"], "command": "new_pane" },
   { "keys": ["ctrl+alt+shift+="], "command": "close_pane" },
   { "keys": ["ctrl+w", "ctrl+w"], "command": "focus_neighboring_group" },
+  { "keys": ["ctrl+0"], "command": "focus_side_bar" },
+  { "keys": ["f2"], "command": "next_bookmark" },
+  { "keys": ["shift+f2"], "command": "prev_bookmark" },
+  { "keys": ["f11"], "command": "toggle_bookmark" },
+  { "keys": ["ctrl+shift+f2"], "command": "clear_bookmarks" },
+  { "keys": ["shift+f11"], "command": "select_all_bookmarks" },
 ]
