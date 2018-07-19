@@ -17,4 +17,6 @@
   { "keys": ["f11"], "command": "toggle_bookmark" },
   { "keys": ["ctrl+shift+f2"], "command": "clear_bookmarks" },
   { "keys": ["shift+f11"], "command": "select_all_bookmarks" },
+  { "keys": ["ctrl+shift+n"], "command": "show_overlay", "args": {"overlay": "goto", "show_files": true} },
+  { "keys": ["ctrl+shift+r"], "command": "goto_symbol_in_project" },
 ]
