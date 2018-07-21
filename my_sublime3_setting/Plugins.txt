@@ -8,6 +8,9 @@
 
 5. Material Theme
 
+6.  BlcokCursor everywhere    其实这个插件可以不装，不装的话， 用自己定制过的主题，效果似乎更好
+
+
 
 
 
