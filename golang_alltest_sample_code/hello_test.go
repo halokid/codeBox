@@ -28,6 +28,7 @@ func ExampleHello() {
 }
 
 
+/**
 func TestStackGrowth(t *testing.T) {
   t.Parallel()
   var wg sync.WaitGroup
@@ -54,3 +55,5 @@ func BenchemarkValueRead (b *testing.B) {
     } 
   }
 }
+
+**/
