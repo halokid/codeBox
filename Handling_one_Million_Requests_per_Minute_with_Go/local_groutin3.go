@@ -13,4 +13,127 @@ var (
 )
 
 
+// Job指要运行的任务
+type Job struct {
+  Payload Payload
+}
+
+
+// 一个可以发送工作请求的缓冲 channel
+var JobQueue chan Job 
+
+
+// Worker 表示要执行任务的 worker
+type Worker struct {
+  WorkerPool chan chan Job  
+  JobChannel chan  Job
+  quit  chan bool   
+} 
+
+
+// 处理上传到 S3 的实际逻辑
+func NewWorker(workerPool chan chan Job) Worker {
+  return Worker {
+    workerPool:   workerPool,
+    JobChannel:   make(chan Job),
+    quit:         make(chan bool)
+  }
+}
+
+
+
+// Start方法开启一个worker循环， 监听退出channel, 可按需停止这个循环
+fucn (w Worker) Start() {
+  go func() {
+    for {
+      // 将当前的 worker 注册到 worker 队列中
+      w.WorkerPool <- w.JobChannel
+
+      select {
+      case job := <- w.JobChannel:
+        // 此时我们接收到一个工作请求
+        if err := job.Payload.UploadToS3(); err != nil {
+          log.Errorf("Error uploading to S3: %s", err.Error())
+        }
+
+      case <- w.quit:
+        // 此处接收一个停止信号
+        return 
+      }
+    } 
+  }()
+}
+
+
+// Stop方法控制 worker 停止监听工作请求
+func (w Worker) Stop() {
+  go func() {
+    w.quit() <- true
+  }()
+}
+
+
+
+
+// 我们修改了 Web 请求处理器，使之能够创建一个携带载荷信息的 Job 实例， 然后把它发到 JobQueue channel 中供 worker 消费
+func payloadHandler(w http.ResponseWriter, r *http.Request) {
+  if r.Method != "POST" {
+    w.WriteHeader(http.StatusMethodNotAllowed)
+    return
+  }
+
+  // 把包体读入到一个字符串中， 进行json解析
+  var content = &PayloadCollection{}
+  err := json.NewDecoder(io.LimitReader(r.Body, MaxLength)).Decode(&content)
+  if err != nil {
+    w.Header().Set("Content-Type", "application/json;charset=UTF-8")
+    w.WriteHeader(http.StatusBadRequest)
+    return
+  }
+
+
+  // 遍历载荷， 逐个队列化用以上传到S3 
+  for _, payload := range content.Payloads {
+
+    // 创建一个带有载荷的任务, Job实例
+    work := Job{ Payload:  payload}  
+
+    // 然后把它放到队列中
+    JobQueue <- worker
+  }
+
+  w.WriteHeader(http.StatusOK)
+}
+
+
+
+func main() {
+  disptcher := NewDispatcher(MaxWorker)
+  disptcher.Run() 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
