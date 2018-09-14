@@ -13,15 +13,21 @@ var (
 )
 
 
+// TODO:  首先定义一个 Job 的结构体
+
 // Job指要运行的任务
 type Job struct {
   Payload Payload
 }
 
 
+// TODO: 定义一个储存Job 的channel,  这个就是一个 Job队列
+
 // 一个可以发送工作请求的缓冲 channel
 var JobQueue chan Job 
 
+
+// TODO: 定义 Worker 的结构体
 
 // Worker 表示要执行任务的 worker
 type Worker struct {
@@ -30,6 +36,8 @@ type Worker struct {
   quit  chan bool   
 } 
 
+
+// TODO:  定义一个函数，生成一个 Worker
 
 // 处理上传到 S3 的实际逻辑
 func NewWorker(workerPool chan chan Job) Worker {
@@ -91,15 +99,18 @@ func payloadHandler(w http.ResponseWriter, r *http.Request) {
     return
   }
 
+  // TODO: 事实上 content 只是一串 json 类型的数据格式
 
   // 遍历载荷， 逐个队列化用以上传到S3 
   for _, payload := range content.Payloads {
+
+    // TODO:  JSON 类型的数据格式， 描述要做的 payload
 
     // 创建一个带有载荷的任务, Job实例
     work := Job{ Payload:  payload}  
 
     // 然后把它放到队列中
-    JobQueue <- worker
+    JobQueue <- work
   }
 
   w.WriteHeader(http.StatusOK)
@@ -113,6 +124,10 @@ func main() {
 }
 
 
+/**
+证明自己对写程序的思路还是不够清晰， 很多东西都可以用方程式去理解， 所以自己可以尝试先用方程式去理解任何
+东西，不行再去寻找其他的理解方式
+**/
 
 
 
