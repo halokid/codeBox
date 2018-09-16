@@ -85,6 +85,7 @@ func payloadHandler(w http.ResponseWriter, r *http.Request) {
   for _, payload := range content.Payloads {
     work := Job{Payload: payload}
 
+    // 把要处理的工作写进队列里面去
     job_queue <-  work
   }
 
@@ -123,9 +124,20 @@ func (d *Dispathcher) Run() {
 }
 
 
+func (d *Dispathcher) dispathch() {
+  for {
+    select {
+    case job := <- job_queue:
+      // 收到任务请求
+      go func(job Job) {
+        job_channel := <- d.worker_pool
 
+        job_channel <- job
+      }(job)
 
-
+    }
+  }
+}
 
 
 
