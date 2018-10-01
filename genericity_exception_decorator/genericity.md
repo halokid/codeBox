@@ -363,24 +363,101 @@ func main() {
 
 
 
+### java装饰器
+
+```java 
+
+
+public interface Person {
+  void doCoding(); 
+}
+
+
+public class Employee implements Person {
+  @Override
+  public void doCoding() {
+    System.out.println("程序员加班写代码啊， 写代码， 终于写完了......")
+  }
+}
+
+
+// ---------------------------------------------------------------
+
+
+
+
+// abstract 关键字证明该类一定会被再继承
+public abstract class Manager implements Person {
+  // 装饰器增加功能
+  public abstract void doCoding();
+}
+
+public class ManagerA extends Manager {
+  private Person person;    // 给雇员升职
+
+  public ManagerA (Person person) {
+    super();
+    this.person = person;
+  }
+
+  @Override
+  public void doCoding() {
+    doEarlyWork();
+    person.doCoding();
+  }
+
+
+  public void doEarlyWork() {
+    System.out.println("项目经理A做需求分析")
+  }
+}
+
+
+// --------------------------------------------------
+
+public class ManagerB extends Manager {
+  private Person person;      // 给雇员升职
+
+  public ManagerB(Person person) {
+    super();
+    this.person = person;
+  }
+
+  @Override
+  public void doCoding() {
+    person.doCoding();
+    doEndWork();
+  }
+
+  public void doEndWork() {
+    System.out.println("项目经理B 再做收尾工作")
+  }
+}
+
+
+
+public class Client {
+  public static void main(String[] args) {
+    Person employee = new Employee();
+
+    employee = new ManagerA(employee);    //赋予程序猿项目经理A职责
+    employee = new ManagerB(employee);    //赋予程序猿项目经理B职责 
+
+    employee.doCoding();
+  }
+}
+
+//输出
+//项目经理A做需求分析
+// 程序员加班写程序啊，写程序，终于写完了。。。
+// 项目经理B 在做收尾工作
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+```
 
 
 
