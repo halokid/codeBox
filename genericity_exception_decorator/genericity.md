@@ -295,6 +295,8 @@ func main() {
 
 **/
 
+// 实际的作用就是到时候， 定义一个 Sortable 的实例的时候， 比如定义了两个 Sortable 的实例a, b, 假如 a 是 int[] 类型， 那么可以定义属于 int[] 类型的属性和方法
+// 假如 b  是属于  string[] 类型， 那么可以针对  string[] 类型来定义属于  string[] 类型的 属性和方法
 type Sortable interface {
   Len() int
   Less(int, int) bool
