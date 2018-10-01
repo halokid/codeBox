@@ -148,10 +148,218 @@ public class FruitGenerator implements Generator<String> {
 
 - 泛型通配符
 
+```java
+
+public void showKeyValue1(Generic<Number> obj){
+    Log.d("泛型测试","key value is " + obj.getKey());
+}
+
+Generic<Integer> gInteger = new Generic<Integer>(123);
+Generic<Number> gNumber = new Generic<Number>(456);
+
+showKeyValue(gNumber);
+
+// showKeyValue这个方法编译器会为我们报错：Generic<java.lang.Integer> 
+// cannot be applied to Generic<java.lang.Number>
+// showKeyValue(gInteger);
+
+通过提示信息我们可以看到Generic<Integer>不能被看作为`Generic<Number>的子类。由此可以看出:同一种泛型可以对应多个版本（因为参数类型是不确定的），不同版本的泛型类实例是不兼容的。
+
+
+// 正确的通配符写法
+public void showKeyValue1(Generic<?> obj) {
+  Log.d("范型测试", "key value is " + obj.getKey());
+}
+
+// 类型通配符一般是使用？代替具体的类型实参，注意了，此处’？’是类型实参，而不是类型形参 。重要说三遍！此处’？’是类型实参，而不是类型形参 ！
+// 此处’？’是类型实参，而不是类型形参 ！再直白点的意思就是，此处的？和Number、String、Integer一样都是一种实际的类型，可以把？看成所有类型的父类。是一种真实的类型。
+
+```  
+
+
+### 范型方法
+
+```java
+
+public class GenericTest {
+  // 这个类是范型类, 跟上面一样
+  public class Generic<T> {
+    private T key;
+
+    public Generic (T key) {
+      this.key = key;
+    }
+
+  //我想说的其实是这个，虽然在方法中使用了泛型，但是这并不是一个泛型方法。
+  //这只是类中一个普通的成员方法，只不过他的返回值是在声明泛型类已经声明过的泛型。
+  //所以在这个方法中才可以继续使用 T 这个泛型。 
+    public T getkey() {
+      return this.key
+    } 
+
+  }
+
+  /** 
+     * 这才是一个真正的泛型方法。
+     * 首先在public与返回值之间的<T>必不可少，这表明这是一个泛型方法，并且声明了一个泛型T
+     * 这个T可以出现在这个泛型方法的任意位置.
+     * 泛型的数量也可以为任意多个 
+     *    如：public <T,K> K showKeyName(Generic<T> container){
+     *        ...
+     *        }
+     */
+
+  // public 后面的  <T>  是表明该函数返回的类型是 T 类型， 从逻辑上面来看 就是不确定的类型， 实际上 <T> 也是一种类型
+  public <T> T showKeyName (Generic<T> container) {
+    System.out.println("container key: " + container.getKey());
+    T test = container.getKey();
+    return test;
+  }
+
+  //这也不是一个泛型方法，这就是一个普通的方法，只是使用了Generic<Number>这个泛型类做形参而已。
+    public void showKeyValue1(Generic<Number> obj){
+        Log.d("泛型测试","key value is " + obj.getKey());
+    }
+
+  //这也不是一个泛型方法，这也是一个普通的方法，只不过使用了泛型通配符?
+    //同时这也印证了泛型通配符章节所描述的，?是一种类型实参，可以看做为Number等所有类的父类
+    public void showKeyValue2(Generic<?> obj){
+        Log.d("泛型测试","key value is " + obj.getKey());
+    }
+
+     /**
+     * 这个方法是有问题的，编译器会为我们提示错误信息："UnKnown class 'E' "
+     * 虽然我们声明了<T>,也表明了这是一个可以处理泛型的类型的泛型方法。
+     * 但是只声明了泛型类型T，并未声明泛型类型E，因此编译器并不知道该如何处理E这个类型。
+     */
+    public <T> T showKeyName(Generic<E> container){
+
+    }  
+
+    /**
+     * 这个方法也是有问题的，编译器会为我们提示错误信息："UnKnown class 'T' "
+     * 对于编译器来说T这个类型并未项目中声明过，因此编译也不知道该如何编译这个类。
+     * 所以这也不是一个正确的泛型方法声明。
+     */
+    public void showkey(T genericObj){
+
+    }
+
+    public static void main(String[] args) {
+
+    }
+
+}
+
+```
 
 
 
 
+### golang的范型
+```go 
+package main 
+
+import (
+  "fmt"
+)
+
+func bubbleSort(array []int) {
+  for i := 0; i < len(array); i++ {
+    for j := 0; j < len(array) - i - 1; j++ {
+      if array[j] > array[j+1] {
+        // swap
+        array[j], array[j+1] = array[j+1], array[j]
+      } 
+    }
+  }
+}
+
+func main() {
+  a1 := []int{3, 2, 6, 10, 7, 4, 6, 5}
+  bubbleSort(a1)
+  fmt.Println(a1)
+}
+
+
+/**
+
+那么，我们如果希望这个bubbleSort能够同时支持float类型数据排序，或者是按照字符串的长度来排序应该怎么做呢？在其他的例如java语言中，我们可以将bubbleSort定义为支持泛型的排序，但是Go里面就不行了。为了达到这个目的，我们可以使用interface来实现相同的功能。
+
+针对上面的排序问题，我们可以分析一下排序的步骤：
+
+查看切片长度，以用来遍历元素(Len)；
+比较切片中的两个元素(Less)；
+根据比较的结果决定是否交换元素位置(Swap)。
+到这里，或许你已经明白了，我们可以把上面的函数分解为一个支持任意类型的接口，任何其他类型的数据只要实现了这个接口，就可以用这个接口中的函数来排序了。
+
+**/
+
+type Sortable interface {
+  Len() int
+  Less(int, int) bool
+  Swap(int, int)
+}
+
+func bubbleSort(array Sortable) {
+  for i := 0; i < array.Len(); i++ {
+    for j := 0; j < array.Len()-i-1; j++ {
+      if array.Less(j+1, j) {
+        array.Swap(j, j+1)
+      }
+    }
+  }
+}
+
+
+
+// 实现接口的整型切片
+// 这里的意思就是, 假如 InArr 是  []int 的意思
+type InArr []int
+
+func (array InArr) Len() int {
+  return len(array) 
+}
+
+func (array InArr) Less(i int, j int) bool {
+  return array[i] < array[j]
+}
+
+func (array InArr) Swap(i int, j int) {
+  array[i], array[j] = array[j], array[i]
+}
+
+
+
+//实现接口的字符串，按照长度排序
+// 这里的意思就是， 假如 InArr 是 []string 的意思
+type StringArr []string
+
+func (array StringArr) Len() int {
+  return len(array)
+}
+
+func (array StringArr) Less(i int, j int) bool {
+  return len(array[i]) < len(array[j])
+}
+
+func (array StringArr) Swap(i int, j int) {
+  array[i], array[j] = array[j], array[i]
+}
+
+//测试
+func main() {
+  intArray1 := IntArr{3, 4, 2, 6, 10, 1}
+  bubbleSort(intArray1)
+  fmt.Println(intArray1)
+
+  stringArray1 := StringArr{"hello", "i", "am", "go", "lang"}
+  bubbleSort(stringArray1)
+  fmt.Println(stringArray1)
+}
+
+
+```
 
 
 
