@@ -81,3 +81,6 @@ Temporary Items
 /tensorflow/tf_in_action/*.meta
 /tensorflow/tf_in_action/*.index
 /tensorflow/tf_in_action/*.data-00000-of-00001
+/MachineLearn-DeepLearn-AI/.idea
+/make_python_package/.idea
+/make_python_package/MyPackage/__pycache__/*.pyc
