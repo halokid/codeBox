@@ -81,6 +81,18 @@ Temporary Items
 /tensorflow/tf_in_action/*.meta
 /tensorflow/tf_in_action/*.index
 /tensorflow/tf_in_action/*.data-00000-of-00001
+<<<<<<< HEAD
 /MachineLearn-DeepLearn-AI/.idea
 /make_python_package/.idea
 /make_python_package/MyPackage/__pycache__/*.pyc
+=======
+/MachineLearn-DeepLearn-AI/Programming_Collective_Intelligence_code/making_recommendations/*.pyc
+/limiting_qps/.idea
+/aliyun_java_edu/.idea
+/aliyun_java_edu/aliyun-r00xx/*.iml
+/aliyun_java_edu/aliyun-r00xx/target/classes/*.class
+/aliyun_java_edu/aliyun-r00xx/src/main/java/*.class
+/aliyun_java_edu/aliyun-r00xx/target/classes/util/*.class
+/golang_natural_blockchain/.idea
+/why_backend_use_golang/.idea
+>>>>>>> 361ebd811267c236128f185aecb34f1c58fe326b
