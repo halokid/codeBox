@@ -46,6 +46,9 @@ curl -s 'localhost:26657/abci_query?data="name"'
 http://localhost:26657/
 
 
+# reset区块链数据
+unsafe_reset_all
+
 ```
 
 
