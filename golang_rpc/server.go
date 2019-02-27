@@ -56,8 +56,11 @@ func (s *Server) Run() {
     // make RPC call func args
     inArgs := make([]reflect.Value, 0, len(rpcData.Args))
     for _, arg := range rpcData.Args {
-
+      inArgs = append(inArgs, reflect.ValueOf(arg))
     }
+
+    // call & run func
+    out := f.Call(inArgs)
   }
 }
 
