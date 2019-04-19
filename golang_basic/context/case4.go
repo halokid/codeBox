@@ -9,8 +9,8 @@ import (
 var key string = "name"
 
 func main() {
+  valueCtx := context.WithValue(ctx, key, "【监控1】") 
   ctx, cancel := context.WithCancel(context.Background())
-  valueCtx := context.WithValue(ctx, key, "【监控1】")
 
   go watch(valueCtx)
   time.Sleep(10 * time.Second)
