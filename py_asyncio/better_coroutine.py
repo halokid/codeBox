@@ -2,9 +2,7 @@ import aiohttp
 import asyncio
 import async_timeout
 import os
-
-import ssl
-ssl._create_default_https_context = ssl._create_unverified_context
+import time
 
 async def downloadCoroutine(session, url):
   with async_timeout.timeout(10):
@@ -29,7 +27,7 @@ async def main(loop):
           "http://www.irs.gov/pub/irs-pdf/f1040es.pdf",
           "http://www.irs.gov/pub/irs-pdf/f1040sb.pdf"]
 
-  async with aiohttp.ClientSession(loop = loop) as session:
+  async with aiohttp.ClientSession(loop = loop, connector=aiohttp.TCPConnector(verify_ssl=False)) as session:
     tasks = [downloadCoroutine(session, url) for url in urls]
     await asyncio.gather(*tasks)
 
