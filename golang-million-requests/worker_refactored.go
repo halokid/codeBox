@@ -76,7 +76,8 @@ func main() {
 
   jobs := make(chan job, *maxQueueSize)
 
-  // 循环 workers， 通过协程把 job 添加到 doWork里面去处理, 所以这几个 worker 是同时处理 job 的
+  // fixme: 循环 workers， 通过协程把 job 添加到 doWork里面去处理, 所以这几个 worker 是同时处理 job 的
+  // fixme: jobs channle 的写入由另外一个逻辑去负责
   for i := 1; i <= *maxWorkders; i++ {
     go func(i int) {
       for j := range jobs {
