@@ -35,6 +35,7 @@ func main() {
     go func(i int) {
       defer wg.Done()
 
+			//fixme: 这里有一个关键的点就是， 这个for循环是去jobs这个channel拿数据，一直到消费完为止
       for j := range jobs {
         doWorkx(i, j)
       }
