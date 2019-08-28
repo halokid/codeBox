@@ -1,6 +1,11 @@
+'''
+适合 py 3.6.x
+'''
+
 import asyncio
 import time
 start = time.time()
+s = time.perf_counter()
 
 async def do(x):
   print("Waitting: ", x)
@@ -28,6 +33,10 @@ for task in tasks:
 
 end = time.time()
 print("TIME: ", end - start)
+
+# 另外一种计算耗时的方式
+elapsed = time.perf_counter() - s
+print(f"{__file__} executed in {elapsed:0.2f} seconds.")
 
 
 
