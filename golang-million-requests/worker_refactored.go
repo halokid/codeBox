@@ -80,6 +80,7 @@ func main() {
   // fixme: jobs channle 的写入由另外一个逻辑去负责
   for i := 1; i <= *maxWorkders; i++ {
     go func(i int) {
+      // 这里会阻塞， 直到有新的job读取，才会执行，开一个新的 gor 来执行这个逻辑，貌似比select要清晰一点？？
       for j := range jobs {
         doWork(i, j)
       }

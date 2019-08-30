@@ -36,6 +36,7 @@ func main() {
       defer wg.Done()
 
 			//fixme: 这里有一个关键的点就是， 这个for循环是去jobs这个channel拿数据，一直到消费完为止
+      // 这里会阻塞， 直到有新的job读取，才会执行，开一个新的 gor 来执行这个逻辑，貌似比select要清晰一点？？
       for j := range jobs {
         doWorkx(i, j)
       }
