@@ -24,3 +24,6 @@ func main() {
   go printData(&wg, data[3:])
   wg.Wait()
 }
+
+
+
