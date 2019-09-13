@@ -15,12 +15,14 @@ type APIConnection struct {
 }
 
 func Open() *APIConnection {
+  /** 定义一个计时器，限制执行逻辑 */
   return &APIConnection{
     rateLimiter:      rate.NewLimiter(rate.Limit(1), 1),
   }
 }
 
 func (a *APIConnection) ReadFile(ctx context.Context) error {
+  // 检查计时限制
   if err := a.rateLimiter.Wait(ctx); err != nil {
     return err
   }
@@ -30,6 +32,7 @@ func (a *APIConnection) ReadFile(ctx context.Context) error {
 }
 
 func (a *APIConnection) ResolvedAddress(ctx context.Context) error {
+  // 检查计时限制
   if err := a.rateLimiter.Wait(ctx); err != nil {
     return err
   }
