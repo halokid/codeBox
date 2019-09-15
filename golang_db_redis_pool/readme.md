@@ -8,7 +8,7 @@ mysql产生错误，比如  too many connection,  too many time_wait 等等这�
 
 - 0x2 代码范例
 请查看main.go
-
+（有帮忙的话请start或者follow一下哦，谢谢）
 
 - 0x3 分析
 
