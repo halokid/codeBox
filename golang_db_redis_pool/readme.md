@@ -7,7 +7,7 @@ mysql产生错误，比如  too many connection,  too many time_wait 等等这�
 
 
 #### 0x2 代码范例
-请查看main.go
+请查看main.go， [链接](https://github.com/halokid/codeBox/tree/master/golang_db_redis_pool)
 （有帮忙的话请start或者follow一下哦，谢谢）
 
 #### 0x3 分析
@@ -164,6 +164,7 @@ time.Sleep(30 * time.Second)
 
 还有一种请况就是，我们的程序的连接池生命周期设置大于mysql服务器的生命周期设置， 这个时候就会有一种请况，假如我们重复用连接池的连接，会产生
 连接错误的问题，解决方法有两种：
+
 1. 可以在程序里面设置生命周期时间小于mysql服务端的连接生命周期时间就可以了
 2. 增加程序的重连(keepalive）机制，就是定时发送一个连接包服务端
 关于第2点我们我们以后可以再发散来说，一般如果允许的话，用第一种方式即可。
