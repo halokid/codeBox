@@ -22,9 +22,10 @@ func main() {
       select {
       case ch <-doWork():
       case <-done:
-        //close(ch)
+        close(ch)     // 关闭上面才会停止监听，不然就会deadlock
         return
       }
+      // 0.1秒执行一次  doWork, 一旦关闭 ch, 则停止执行
       time.Sleep(100 * time.Millisecond)
     }
   }()
