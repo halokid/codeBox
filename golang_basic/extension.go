@@ -31,4 +31,13 @@ func (d *Dog) Speak() {
 func main() {
   dog := new(Dog)
   dog.SpeakTo("xx")       // 这里并不会调用重新定义的 针对Dog 的 Speak 方法
+
+  var p interface{}
+  p = 10
+  switch p.(type) {
+  case int:
+    fmt.Println("yyy")
+  case string:
+    fmt.Println("zzzz")
+  }
 }
