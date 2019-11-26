@@ -99,3 +99,5 @@ Temporary Items
 /golang_basic/.idea
 /golang_rpc/.idea
 /golang_coroutine_sample/.idea
+/book_sample/Concurrency-in-Go/.idea
+/golang_stop_gortine/.idea
