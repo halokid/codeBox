@@ -1,0 +1,7 @@
+version: '2' # 表示该 Docker-Compose 文件使用的是 Version 2 file
+services:
+  webappxx:  # 指定服务名称
+    image: my-webapp:v1
+    #build: .  # 指定 Dockerfile 所在路径
+    ports:    # 指定端口映射
+      - "8089:80"
