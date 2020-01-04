@@ -72,14 +72,22 @@ func TestCancel(t *testing.T) {
     go func(i int, cancelCh chan struct{}) {
       for {
         if isCanceled(cancelCh) {       // 一旦往 cancel channel写入数据，则表示要取消
+          //fmt.Println("有一些不显示 // 2的输出，是因为协程还没有分配到执行这个i，没有sleep 5s")
+          fmt.Println("已经cancel的输出-----------", i)
+          //return
           break
+        } else {
+          fmt.Println("还没有cancel的输出, for一直在阻塞---------", i)
         }
         time.Sleep(5 * time.Second)
       }
-      fmt.Println(i, "Canceled")
+      // 2
+      //fmt.Println("8核的CPU， 默认8个协程同时跑---", i, "close channel之后，这里sleep 5秒都还会输出，证明close channel， 已经执行的gor还是会执行的, 不知道ctx cancel会不会也是这样？")
+      //fmt.Println("还没有cancel的输出", i)
     }(i, cancelChan)
   }
 
+  //fmt.Println("因为8核默认只跑8个协程，而且每个协程阻塞5秒， main协程阻塞3秒， 所以肯定少两个输出 //2 位置")
   //cancel2(cancelChan)
   cancel1(cancelChan)             // 广播机制，一旦close，则所有的 监听此channel的逻辑都直接返回
   time.Sleep( 3 * time.Second)
