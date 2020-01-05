@@ -1,6 +1,7 @@
 package golang_in_action
 
 import (
+  "context"
   "fmt"
   "sync"
   "testing"
@@ -93,7 +94,42 @@ func TestCancel(t *testing.T) {
   time.Sleep( 3 * time.Second)
 }
 
+func isCancelled(ctx context.Context) bool {
+  select {
+  case <-ctx.Done():
+    return true
+  default:
+    return false
+  }
+}
 
+func isCancelCtx(ctx context.Context) bool {
+  select {
+  case <-ctx.Done():
+    return true
+  default:
+    return false
+  }
+}
+
+
+func TestCtxCancel(t *testing.T) {
+  ctx, cancel := context.WithCancel(context.Background())
+  for i := 0; i < 5; i++ {
+    go func(i int, ctx context.Context) {
+      for {
+        if isCancelCtx(ctx) {
+          break
+        }
+        time.Sleep(5 * time.Second)
+      }
+      fmt.Println(i, "ctx canceled")
+    }(i, ctx)
+  }
+
+  cancel()        // 给ctx发送cancel信号, 触发 ctx.Done()
+  time.Sleep(1 * time.Second)
+}
 
 
 
