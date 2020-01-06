@@ -14,6 +14,7 @@ import (
 
 var Db *gorm.DB
 
+/**
 func init()  {
   var err error
   Db, err = gorm.Open("mysql",  "xxx:xxxxx@tcp(8.8.8.8:33061)/ocx?charset=utf8&parseTime=True&loc=Local")
@@ -21,6 +22,7 @@ func init()  {
     panic(err)
   }
 }
+*/
 
 type Deploy struct {
   ID      int
