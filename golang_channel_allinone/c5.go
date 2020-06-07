@@ -25,7 +25,7 @@ func testQuit() {
     for {
       v, ok := <-g
       fmt.Println(v, ok)
-      if !ok {        // 不close channel，ok就不会返回flase
+      if !ok {        // 不close channel，ok就不会返回flase，用for select的模式可以不用close channel
         break
       }
     }
