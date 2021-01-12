@@ -32,6 +32,7 @@ func main() {
   // fixme: 值的注意的是，  jobs 是非缓冲channel， 那就是 写入一次， worker才能处理一次
   wg.Add(maxWorkers)
   for i := 1; i <= maxWorkers; i++ {
+    // 5个worker同时监听jobs,5个并发
     go func(i int) {
       defer wg.Done()
 
