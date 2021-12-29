@@ -122,3 +122,6 @@ ms_react_guide/mslearn-react/code/0-starter/node_modules
 /sprboot-jdbc-restful/.idea
 /SpringAll/.idea
 /sprAllinone/.idea
+/springCloudSampleDemo/.idea
+/springCloudSampleDemo/service-hi/.mvn/wrapper
+/springCloudSampleDemo/eureka-server/.mvn/wrapper
