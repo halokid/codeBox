@@ -1,0 +1,43 @@
+version: '2.1'
+services:
+  es:
+    container_name: es
+    restart: always
+    image: elasticsearch:6.8.5
+    privileged: true
+    expose:
+      - '9200'
+      - '9300'
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms256m -Xmx256m
+    volumes:
+      - /home/zzy/es-data:/usr/share/elasticsearch/data
+      - /home/zzy/temp:/tmp
+  oap:
+    depends_on:
+      - es
+    container_name: oap
+    restart: always
+    image: apache/skywalking-oap-server:latest
+    expose:
+      - '12800'
+    ports:
+      - '12800:12800'
+      - '11800:11800'
+    environment:
+      SW_STORAGE: elasticsearch
+      SW_STORAGE_ES_CLUSTER_NODES: es:9200
+  ui:
+    depends_on:
+      - oap
+    container_name: ui
+    restart: always
+    image: apache/skywalking-ui:latest
+    ports:
+      - '8080:8080'
+    environment:
+      SW_OAP_ADDRESS: oap:12800
