@@ -1,0 +1,31 @@
+<!--
+<beans xmlns="://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 配置目标类【即要实现哪个类】 -->
+    <bean id="HelloWorldService" class="com.cxb.service.impl.HelloWorldService"/>
+
+    <!-- 配置切面类 -->
+    <bean id="HelloWorldAspect" class="com.cxb.aop.HelloWorldAspect"/>
+
+    <!--配置AOP-->
+    <!-- 强制使用cglib代理，如果不设置，将默认使用jdk的代理，但是jdk的代理是基于接口的 -->
+    <aop:config proxy-target-class="true">
+        <!-- 定义切入点 (配置在com.cxb下所有的类在调用之前都会被拦截)-->
+        <aop:pointcut expression="execution(* com.cxb..*.*(..))" id="HelloWorldPointcut"/>
+        <!--切面-->
+        <aop:aspect ref="HelloWorldAspect">
+            <!--配置前置通知-->
+            <!--配置哪个切入点的哪个方法-->
+            <aop:before pointcut-ref="HelloWorldPointcut" method="beforeAdvice"/>   <!--一个切入点的引用-->
+        </aop:aspect>
+    </aop:config>
+
+
+</beans>
+-->
+
