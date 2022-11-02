@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@snowpack/plugin-webpack": "^3.0.0",
     "snowpack": "^2.18.5"
   },
   "dependencies": {
@@ -9,5 +10,10 @@
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build"
-  }
+  },
+  "plugins": [
+    [
+      "@snowpack/plugin-webpack"
+    ]
+  ]
 }

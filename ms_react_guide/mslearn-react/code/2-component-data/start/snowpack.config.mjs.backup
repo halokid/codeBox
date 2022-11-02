@@ -1,0 +1,15 @@
+export default {
+  plugins: [
+    [
+      '@snowpack/plugin-webpack',
+      {
+        /* see "Plugin Options" below */
+      },
+    ],
+  ],
+  optimize: {
+    bundle: true,
+    minify: true,
+    target: "es2018",
+  },
+};

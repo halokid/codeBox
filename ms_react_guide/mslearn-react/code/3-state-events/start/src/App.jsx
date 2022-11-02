@@ -23,6 +23,9 @@ function App() {
   const [recipe, setRecipe] = useState(initialRecipe);
 
   // TODO: Add new state property
+  // todo: prepared 的初始值是 false, setPrepared 只能设置在这里的 `prepare` 的值，因为是
+  // todo: 专门针对这个值的状态机
+  // todo: 新设置的这个state值的初始化值为 `false`
   const [ prepared, setPrepared ] = useState(false);
 
   // TODO: Create ingredientClick event listener
@@ -32,8 +35,13 @@ function App() {
     setRecipe(updatedRecipe);
   }
 
-  // TODO: Add the effect hook
+  // TODO: Add the effect hook(效果挂钩), 这个是监听数据对象状态的组件，只要是监听的数据的状态产生改变，就会触发下面设定的逻辑
   useEffect(() => {
+    // todo: 每当recipe数据改变的时候， 都会触发这个 setPrepared 检查， 这个检查的逻辑是检查recipe数据
+    // todo: 的 ingredients 的所有的 prepared 属性是否都是 true, 假如都市true， 则 const[ prepared ]
+    // todo: 的 prepared 的值为 true
+    // todo: setPrepared 函数里面的参数 set 之后的数据， 就是 const [ prepared ] 里面的这个 prepare的值
+    // todo: 代码使用 setPrepared 来更新 prepared。 它使用 every 方法，该方法根据与所指定的条件匹配的每个项返回一个布尔值。 在本例中，我们将检查是否已准备好每项原料。 如果没有，此方法返回 false
     setPrepared(recipe.ingredients.every(i => i.prepared));
   }, [recipe]);
 
