@@ -45,6 +45,27 @@ if __name__ == '__main__':
 
   print(f.close())
 
+  # ---------------------------------
+  z = set('abc')
+  z.add('san')
+  z.update(set(['p', 'q']))
+  print(z)
+
+  # ---------------------------------
+  x = ['ab', 'cd']
+  print(list(map(len, x)))
+  # print(list(map(len(x), x)))   # todo: error, the map key can not be a `int` type
+  # print(list(map(x.len, x)))    # todo: error, list `x` dont have the `.len` attribute
+  print(list(map(lambda x: len(x), x)))
+
+  # ---------------------------------
+  t1 = '%(a)s %(b)s %(c)s'
+  print(t1 % dict(a = 'Welcome', b = 'to', c = 'Turing'))
+
+  # t2 = '%(a) %(b) %(c)'     # todo: error, ValueError: incomplete format
+  # print(t2 % dict(a = 'Welcome', b = 'to', c = 'Turing'))
+
+
 
 
 
