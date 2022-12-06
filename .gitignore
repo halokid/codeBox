@@ -49,7 +49,6 @@ Temporary Items
 /ML-AI-sample/.vscode
 /java_basic/*.class
 /py_Parallel/.idea
-<<<<<<< HEAD
 /java_aop/.idea
 =======
 /py_Parallel/process_allinone/*.pyc
@@ -69,19 +68,15 @@ Temporary Items
 /java-junit-sample/*.iml
 /java-junit-sample/.idea
 /daily_tools/SyncTags/src/main/java/com/inif/数据库连接.java
-<<<<<<< HEAD
 /java_aop/*.iml
 /daily_tools/jiankongbao/.idea
 /daily_tools/jiankongbao/*.iml
 /daily_tools/jiankongbao/jiankongbao/*.exe
 =======
->>>>>>> 2f15e2490f29f9d1f35be53e4e05ba51a457abb4
->>>>>>> 2a3f6f5341f23b9d2bd1bb8551b139f0a18aeb6a
 /tensorflow/.idea
 /tensorflow/tf_in_action/*.meta
 /tensorflow/tf_in_action/*.index
 /tensorflow/tf_in_action/*.data-00000-of-00001
-<<<<<<< HEAD
 /MachineLearn-DeepLearn-AI/.idea
 /make_python_package/.idea
 /make_python_package/MyPackage/__pycache__/*.pyc
@@ -95,7 +90,6 @@ Temporary Items
 /aliyun_java_edu/aliyun-r00xx/target/classes/util/*.class
 /golang_natural_blockchain/.idea
 /why_backend_use_golang/.idea
->>>>>>> 361ebd811267c236128f185aecb34f1c58fe326b
 /golang_basic/.idea
 /golang_rpc/.idea
 /golang_coroutine_sample/.idea
@@ -125,3 +119,6 @@ ms_react_guide/mslearn-react/code/0-starter/node_modules
 /springCloudSampleDemo/.idea
 /springCloudSampleDemo/service-hi/.mvn/wrapper
 /springCloudSampleDemo/eureka-server/.mvn/wrapper
+.env
+contract-abi.json
+web3/alchemy_sample/tutorial/hello-world/artifacts
