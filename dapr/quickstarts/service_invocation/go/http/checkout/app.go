@@ -8,7 +8,11 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 )
+
+//var a string
+//var b chan int
 
 func main() {
 	var DAPR_HOST, DAPR_HTTP_PORT string
@@ -44,5 +48,13 @@ func main() {
 		}
 
 		fmt.Println("Order passed: ", string(result))
+		time.Sleep(5 * time.Second)
 	}
+
+	// block the service for daemon
+	block := make(chan int)
+	<-block
 }
+
+
+

@@ -122,3 +122,5 @@ ms_react_guide/mslearn-react/code/0-starter/node_modules
 .env
 contract-abi.json
 web3/alchemy_sample/tutorial/hello-world/artifacts
+bootstrap.yml
+bootstrap.yaml
