@@ -2,21 +2,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.halokid</groupId>
         <artifactId>ecommerce-springcloud</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>e-commerce-authority-center</artifactId>
+    <artifactId>e-commerce-gateway</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <!-- 模块名及描述信息-->
-    <name>e-commerce-authority-center</name>
-    <description>授权中心</description>
-
+    <!--模块名及描述信息-->
+    <name>e-commerce-gateway</name>
+    <description>Spring cloud Gateway</description>
 
     <dependencies>
         <dependency>
@@ -25,37 +24,45 @@
             <version>2.2.3.RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.12</version>
-            <scope>runtime</scope>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
         <dependency>
             <groupId>org.halokid</groupId>
-            <artifactId>e-commerce-mvc-config</artifactId>
+            <artifactId>e-commerce-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <!--screw 生成数据库文档-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-starter-sleuth</artifactId>-->
+        <!--        </dependency>-->
+        <!--sleuth   链路追终-->
         <dependency>
-            <groupId>org.freemarker</groupId>
-            <artifactId>freemarker</artifactId>
-            <version>2.3.31</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+            <version>2.5.0.RELEASE</version>
+        </dependency>
+        <!--集成sentinel,在网关层面实现限流-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
         <dependency>
-            <groupId>cn.smallbun.screw</groupId>
-            <artifactId>screw-core</artifactId>
-            <version>1.0.3</version>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-alibaba-sentinel-gateway</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-zipkin</artifactId>-->
-<!--            <version>2.1.0.RELEASE</version>-->
-<!--        </dependency>-->
+        <!--sentinel 使用Nacose 存储规则-->
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-datasource-nacos</artifactId>
+        </dependency>
     </dependencies>
+
 
     <build>
         <finalName>${artifactId}</finalName>
@@ -75,4 +82,6 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
+

@@ -14,6 +14,7 @@
         <module>e-commerce-alibaba-nacos-client</module>
         <module>e-commerce-admin</module>
         <module>e-commerce-authority-center</module>
+        <module>e-commerce-gateway</module>
     </modules>
 
     <name>${project.artifactId}</name>
