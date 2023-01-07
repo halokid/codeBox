@@ -17,10 +17,13 @@ public class SimpleGoodsInfo {
 
   @ApiModelProperty(value = "商品表主键id")
   private Long id;
+
   @ApiModelProperty(value = "商品名称")
   private String goodsName;
+
   @ApiModelProperty(value = "商品图片")
   private String goodsPic;
+
   @ApiModelProperty(value = "商品价格  单位分")
   private Integer price;
 

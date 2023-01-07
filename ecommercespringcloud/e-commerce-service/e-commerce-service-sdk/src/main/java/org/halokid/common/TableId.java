@@ -20,7 +20,6 @@ public class TableId {
   @ApiModelProperty(value = "数据表记录主键")
   private List<Id> ids;
 
-
   @ApiModel(description = "数据表记录主键对象")
   @Data
   @NoArgsConstructor
