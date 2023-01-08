@@ -76,7 +76,7 @@ public class GoodsServiceImpl implements IGoodsService {
         orderPage.getContent().stream()
             .map(EcommerceGoods::toSimple)
             .collect(Collectors.toList()),
-            hasMore
+        hasMore
     );
   }
 
@@ -88,8 +88,15 @@ public class GoodsServiceImpl implements IGoodsService {
         .map(i -> i.getId().toString())
         .collect(Collectors.toList());
 
+    // FIXME: 如果 redis 中查不到 goodsId 对应的数据， 返回的是 null, [null, null], isNotEmpty是为true的
+    // FIXME: 所以要在原来的基础上加上 nonNull 的过滤
+//    List<Object> cacheSimpleGoodsInfos = redisTemplate.opsForHash()
+//        .multiGet(GoodsConstant.ECOMMERCE_GOODS_DICT_KEY, goodIds);
     List<Object> cacheSimpleGoodsInfos = redisTemplate.opsForHash()
-        .multiGet(GoodsConstant.ECOMMERCE_GOODS_DICT_KEY, goodIds);
+        .multiGet(GoodsConstant.ECOMMERCE_GOODS_DICT_KEY, goodIds)
+        .stream()
+        .filter(Objects::nonNull)
+        .collect(Collectors.toList());
 
     // 如果从redis中查到了商品信息， 分两种情况去操作
     if (CollectionUtils.isNotEmpty(cacheSimpleGoodsInfos)) {
@@ -176,11 +183,11 @@ public class GoodsServiceImpl implements IGoodsService {
     });
 
     List<EcommerceGoods> ecommerceGoods = IterableUtils.toList(
-      ecommerceGoodsDao.findAllById(
-          deductGoodsInventories.stream()
-              .map(DeductGoodsInventory::getGoodsId)
-              .collect(Collectors.toList())
-      )
+        ecommerceGoodsDao.findAllById(
+            deductGoodsInventories.stream()
+                .map(DeductGoodsInventory::getGoodsId)
+                .collect(Collectors.toList())
+        )
     );
 
     // 根据传递的 goodsIds 查询不到商品对象， 抛异常

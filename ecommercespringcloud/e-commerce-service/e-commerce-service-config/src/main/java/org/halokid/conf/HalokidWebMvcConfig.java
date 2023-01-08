@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
  * <h1>Web Mvc 配置</h1>
  * 配置拦截器不会生效 ，要做到mvc  配置里面
  */
-@Configuration
+@Configuration    // TODO: 这个注解就是在spring运行期间，让这个class自动配置进去整个运行时的作用
 public class HalokidWebMvcConfig extends WebMvcConfigurationSupport {
 
   /**
