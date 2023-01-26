@@ -16,6 +16,7 @@
         <module>e-commerce-authority-center</module>
         <module>e-commerce-gateway</module>
         <module>e-commerce-service</module>
+        <module>e-commerce-stream-client</module>
     </modules>
 
     <name>${project.artifactId}</name>

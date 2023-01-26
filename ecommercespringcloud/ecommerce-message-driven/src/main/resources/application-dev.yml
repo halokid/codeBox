@@ -1,0 +1,50 @@
+server:
+  port: 8989
+  servlet:
+    context-path: /study-ecommerce-dev
+
+spring:
+  # SpringBoot 集成 Kafka 的配置, 最低配置只需要配置 spring.kafka.bootstrap-servers
+  kafka:
+    bootstrap-servers: 192.168.1.129:9092
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.show_sql: true
+      hibernate.format_sql: true
+    open-in-view: false
+  datasource:
+    # 数据源
+    url: jdbc:mysql://192.168.1.129:33062/halokid_ecommerce?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: mysqlpw
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 连接池
+    hikari:
+      maximum-pool-size: 8
+      minimum-idle: 4
+      idle-timeout: 30000
+      connection-timeout: 30000
+      max-lifetime: 45000
+      auto-commit: true
+      pool-name: ImoocStudyEcommerce
+      #    consumer:
+      # 如果 Consumer 没有指定 group-id, 则使用配置文件中配置的; 如果配置文件中也没有定义, 则由框架随机生成
+#      group-id: imooc-study-ecommerce
+#      auto-offset-reset: latest
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#    producer:
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+# RocketMQ 的配置, 这是最低配置
+rocketmq:
+  name-server: 192.168.1.149:9876
+  producer:
+    # 发送同一类消息的设置为同一个 group, 保证唯一
+    group: halokid-study-ecommerce
+

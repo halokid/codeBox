@@ -1,0 +1,58 @@
+### 获取 Token
+POST http://127.0.0.1:8000/ecommerce-nacos-client/communication/rest-template
+Content-Type: application/json
+
+{
+  "username": "CaoStudy@imooc.com",
+  "password": "25d55ad283aa400af464c76d713c07ad"
+}
+
+
+### 获取 Token, 带有负载均衡
+POST http://127.0.0.1:8000/ecommerce-nacos-client/communication/rest-template-load-balancer
+Content-Type: application/json
+
+{
+  "username": "CaoStudy@imooc.com",
+  "password": "25d55ad283aa400af464c76d713c07ad"
+}
+
+
+### 通过 Ribbon 去获取 Token
+POST http://127.0.0.1:8000/ecommerce-nacos-client/communication/ribbon
+Content-Type: application/json
+
+{
+  "username": "CaoStudy@imooc.com",
+  "password": "25d55ad283aa400af464c76d713c07ad"
+}
+
+
+### 通过原生 Ribbon Api 去获取 Token
+POST http://127.0.0.1:8000/ecommerce-nacos-client/communication/thinking-in-ribbon
+Content-Type: application/json
+
+{
+  "username": "CaoStudy@imooc.com",
+  "password": "25d55ad283aa400af464c76d713c07ad"
+}
+
+
+### 通过 OpenFeign 获取 Token
+POST http://127.0.0.1:8000/ecommerce-nacos-client/communication/token-by-feign
+Content-Type: application/json
+
+{
+  "username": "CaoStudy@imooc.com",
+  "password": "25d55ad283aa400af464c76d713c07ad"
+}
+
+
+### 通过原生 Feign Api 获取 Token
+POST http://127.0.0.1:8000/ecommerce-nacos-client/communication/thinking-in-feign
+Content-Type: application/json
+
+{
+  "username": "CaoStudy@imooc.com",
+  "password": "25d55ad283aa400af464c76d713c07ad"
+}

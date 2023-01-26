@@ -13,6 +13,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 /*
 实现统一响应
  */
+// TODO: 这里只要这样设置了这个注解（RestControllerAdvice), 就会自动配置所有的 org.halokid 包下的restController,
+// TODO: 所有的restful  api 都会走下面的wrap方法去进行逻辑处理
 @RestControllerAdvice(value = "org.halokid")
 public class CommonResponseDataAdvice implements ResponseBodyAdvice<Object> {
   // 判断是否需要对响应进行处理

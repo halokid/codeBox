@@ -1,0 +1,13 @@
+### 查询服务实例信息
+GET http://127.0.0.1:8000/ecommerce-nacos-client/nacos-client/service-instance
+Accept: application/json
+
+### 动态从 Nacos Server 中获取配置信息
+GET http://127.0.0.1:8000/ecommerce-nacos-client/nacos-client/project-config
+Accept: application/json
+
+### 查看 Sleuth 跟踪信息
+GET http://127.0.0.1:9001/caostudy/ecommerce-nacos-client/sleuth/trace-info
+Accept: application/json
+e-commerce-user: eyJhbGciOiJSUzI1NiJ9.eyJlLWNvbW1lcmNlLXVzZXIiOiJ7XCJpZFwiOjEwLFwidXNlcm5hbWVcIjpcIkNhb1N0dWR5QGltb29jLmNvbVwifSIsImp0aSI6IjI4OGU4OTY1LThlMzMtNGMyZS04NGNhLWIwYzYzZGUzYzBiMSIsImV4cCI6MTYzMjE1MzYwMH0.XzcA3-nRD0PyxzkIhg-7t80EawwCZk11MSQ67Lx5NQB0j5O4hA2aA3iweb_AFKr_0EldZtYqe_dcuLjobhPglTjTjZnCnYva0PRuahDD7pk_-S6FO7MNRUkzXVMT0eoo_T69p0wwLq6jsK-RvVHBaWuTEgMSr8msxWLzRutLFlEGEZlmy6iIINg4KmUf0sXdpBfrOQ8UqqLYaqbP3BGGalme4Xz57JI9RdFMGg3tQZlMIqbv59vnPAV1oXHd48bd2HGIE1FYuFP81cxDu2rErr8T1yQxsO9hl44Rzqohz1JDjDNwlPqXH9NcYyBu2JI5k-_Hr9L0o2fhkA8hNcVhtw
+token: caostudy
