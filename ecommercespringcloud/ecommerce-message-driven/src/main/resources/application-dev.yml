@@ -42,9 +42,9 @@ spring:
 #      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
 # RocketMQ 的配置, 这是最低配置
-rocketmq:
-  name-server: 192.168.1.149:9876
-  producer:
+#rocketmq:
+#  name-server: 192.168.1.149:9876
+#  producer:
     # 发送同一类消息的设置为同一个 group, 保证唯一
-    group: halokid-study-ecommerce
+#    group: halokid-study-ecommerce
 
