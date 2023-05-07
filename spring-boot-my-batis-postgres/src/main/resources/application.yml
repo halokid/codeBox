@@ -1,0 +1,12 @@
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: dev
+    password: qwerty
+    url: jdbc:postgresql://localhost/book-mybatis
+  sql:
+    init:
+      continue-on-error: true
+      mode: always
+      platform: postgres

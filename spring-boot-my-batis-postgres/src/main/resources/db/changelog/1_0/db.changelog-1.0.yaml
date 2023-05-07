@@ -1,0 +1,50 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: "1.0"
+      author: boottech
+
+  - include:
+      file: book/001_create_book_table.sql
+      relativeToChangelogFile: true
+
+  - include:
+      file: author/001_create_author_table.sql
+      relativeToChangelogFile: true
+
+  - changeSet:
+      id: 202207011812-1-data
+      author: boottech
+      changes:
+        - loadData:
+            catalogName: cat
+            columns:
+              - column:
+                  header: title
+                  name: title
+                  type: string
+              - column:
+                  header: page
+                  name: page
+                  type: numeric
+              - column:
+                  header: isbn
+                  name: isbn
+                  type: string
+              - column:
+                  header: description
+                  name: description
+                  type: string
+              - column:
+                  header: price
+                  name: price
+                  type: numeric
+            commentLineStartsWith: //
+            encoding: UTF-8
+            file: book/book.csv
+            quotchar: '""'
+            relativeToChangelogFile: true
+            schemaName: public
+            separator: ','
+            tableName: book
+            usePreparedStatements: true
