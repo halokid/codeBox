@@ -1,18 +1,18 @@
 package org.halokid;
 
-
-public class ArrayList {
+@SuppressWarnings("unchecked")      // clear the sytnx alarm
+public class ArrayList<E> {
 
   private int size;
 
-  private int[] elements;
+  private E[] elements;
 
-  private static final int DEFAULT_CAPACITY = 2;
+  private static final int DEFAULT_CAPACITY = 10;
   private static final int ELEMENT_NOT_FOUND = -1;
 
   public ArrayList(int capacity) {
     capacity = (capacity < DEFAULT_CAPACITY) ? DEFAULT_CAPACITY : capacity;
-    elements = new int[capacity];
+    elements = (E[]) new Object[capacity];
   }
 
   public ArrayList() {
@@ -34,18 +34,18 @@ public class ArrayList {
     return size == 0;
   }
 
-  public boolean contains(int element) {
+  public boolean contains(E element) {
     return indexOf(element) != ELEMENT_NOT_FOUND;
   }
 
-  public void add(int element) {
+  public void add(E element) {
 //    elements[size] = element;
 //    size++;
     add(size, element);
   }
 
   // add element in specify `index` position, `index` is count from `0`
-  public void add(int index, int element) {
+  public void add(int index, E element) {
 //    rangeCheckForAdd(index);
 
     ensureCapacity(size + 1);
@@ -65,7 +65,7 @@ public class ArrayList {
     // new capacity is old capacity times
     // right move variable `1` places in binary means some `int` divide by `2`, so `1 + 0.5` equals `1.5`
     int newCapacity = oldCapacity + (oldCapacity >> 1);
-    int[] newElements = new int[newCapacity];
+    E[] newElements = (E[]) new Object[newCapacity];
     for (int i = 0; i < size; i++) {
       newElements[i] = elements[i];
     }
@@ -74,7 +74,7 @@ public class ArrayList {
     System.out.println(oldCapacity + " capacity extends to " + newCapacity);
   }
 
-  public int get(int index) {
+  public E get(int index) {
     // TODO: throw exception is better way in coding
     if (index < 0 || index >= size) {
       throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
@@ -82,21 +82,21 @@ public class ArrayList {
     return elements[index];
   }
 
-  public int set(int index, int element) {
+  public E set(int index, E element) {
     if (index < 0 || index > size) {
       throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
     }
 
-    int old = elements[index];
+    E old = elements[index];
     elements[index] = element;
     return old;
   }
 
-  public int remove(int index) {
-    return 0;
+  public E remove(int index) {
+    return E;
   }
 
-  public int indexOf(int element) {
+  public int indexOf(E element) {
     for (int i = 0; i < size; i++) {
       if (elements[i] == element) return i;
     }
