@@ -1,5 +1,7 @@
 package org.halokid;
 
+import com.sun.xml.internal.ws.server.sei.SEIInvokerTube;
+
 @SuppressWarnings("unchecked")      // clear the sytnx alarm
 public class ArrayList<E> {
 
@@ -23,7 +25,10 @@ public class ArrayList<E> {
   }
 
   public void clear() {
-
+    for (int i = 0; i < size; i++) {
+      elements[i] = null;
+    }
+    size = 0;
   }
 
   public int size() {
@@ -92,13 +97,37 @@ public class ArrayList<E> {
     return old;
   }
 
+  public void rangeCheck(int index) {
+    if (index > size) {
+      throw new IndexOutOfBoundsException("index is bigger than size: " + size);
+    }
+  }
+
   public E remove(int index) {
-    return E;
+    rangeCheck(index);
+
+    E old = elements[index];
+    for (int i = index + 1; i <= size - 1; i++) {
+      elements[i - 1] = elements[i];
+    }
+    size--;
+
+    elements[size] = null;
+
+    return old;
   }
 
   public int indexOf(E element) {
-    for (int i = 0; i < size; i++) {
-      if (elements[i] == element) return i;
+    if (element == null) {
+      for (int i = 0; i < size; i++) {
+        if (elements[i] == null) return i;
+      }
+
+    } else {
+      for (int i = 0; i < size; i++) {
+//      if (elements[i] == element) return i;
+        if (elements[i].equals(element)) return i;
+      }
     }
     return ELEMENT_NOT_FOUND;
   }
@@ -108,6 +137,7 @@ public class ArrayList<E> {
     StringBuilder output = new StringBuilder();
     output.append("Size = " + this.size);
     output.append(", [");
+
     for (int i = 0; i < size; i++) {
       if (i == size - 1) {
         output.append(this.get(i));
@@ -115,6 +145,7 @@ public class ArrayList<E> {
         output.append(this.get(i)).append(", ");
       }
     }
+
     output.append("]");
     return output.toString();
   }
