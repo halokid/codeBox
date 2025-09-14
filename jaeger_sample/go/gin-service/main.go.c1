@@ -1,0 +1,64 @@
+package main
+
+import (
+	"context"
+	"log"
+	"net/http"
+	"os"
+
+	"github.com/gin-gonic/gin"
+
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp"
+	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+	"go.opentelemetry.io/otel/sdk/resource"
+	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
+)
+
+func initTracer() func() {
+	ctx := context.Background()
+
+	// OTLP HTTP Exporter → Jaeger (4318)
+	exp, err := otlptracehttp.New(ctx,
+		otlptracehttp.WithEndpoint("localhost:4318"),
+		otlptracehttp.WithInsecure(),
+	)
+	if err != nil {
+		log.Fatalf("failed to create exporter: %v", err)
+	}
+
+	tp := sdktrace.NewTracerProvider(
+		sdktrace.WithBatcher(exp),
+		sdktrace.WithResource(resource.NewWithAttributes(
+			semconv.SchemaURL,
+			semconv.ServiceNameKey.String("go-gin-service"),
+		)),
+	)
+
+	otel.SetTracerProvider(tp)
+	return func() { _ = tp.Shutdown(ctx) }
+}
+
+func main() {
+	shutdown := initTracer()
+	defer shutdown()
+
+	r := gin.Default()
+
+	r.GET("/hello", func(c *gin.Context) {
+		tr := otel.Tracer("go-gin-handler")
+		_, span := tr.Start(c.Request.Context(), "say-hello")
+		defer span.End()
+
+		c.JSON(http.StatusOK, gin.H{"message": "Hello from Go Gin"})
+	})
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	r.Run(":" + port)
+}
+
+
+

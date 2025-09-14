@@ -23,7 +23,9 @@ tracer = trace.get_tracer(__name__)
 def call_springboot():
   with tracer.start_as_current_span("call-springboot"):
     # resp = requests.get("http://localhost:8080/hello")  # Spring Boot 的接口
-    resp = requests.get("http://localhost:19577/ping")  # Spring Boot 的接口
+    # resp = requests.get("http://localhost:19577/ping")  # Spring Boot 的接口
+
+    resp = requests.get("http://localhost:8080/hello")  # go gin 的接口
     print("Response:", resp.text)
 
 if __name__ == "__main__":

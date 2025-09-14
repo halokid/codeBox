@@ -1,0 +1,18 @@
+[package]
+name = "rust-client"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+reqwest = { version = "0.11", features = ["json"] }
+opentelemetry = { version = "0.22.0", features = ["rt-tokio"] }
+opentelemetry-jaeger = "0.22"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt", "env-filter"] }
+
+
+
+
+
+
