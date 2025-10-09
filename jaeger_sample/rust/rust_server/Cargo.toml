@@ -1,0 +1,45 @@
+[package]
+name = "rust_server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cf-rustracing = "1.1.0"
+cf-rustracing-jaeger = "1.2.2"
+#reqwest = "0.12.23"
+#tokio = { version = "1.4", features = ["full"] }
+
+
+#cf-rustracing = "0.7"
+#cf-rustracing-jaeger = "0.7"
+tokio = { version = "1.0", features = ["full"] }
+reqwest = "0.11"
+http = "0.2"
+trackable = "1"
+
+
+
+[[example]]
+name = "report"
+path = "examples/report.rs"
+
+[[example]]
+name = "http_hello_server"
+path = "examples/http_hello_server.rs"
+
+[[example]]
+name = "c1"
+path = "examples/c1.rs"
+
+
+[dev-dependencies]
+bytecodec = "0.4"
+fibers_global = "0.1"
+fibers_http_server = "0.3"
+futures = "0.1"
+httpcodec = "0.2"
+tokio = { version = "1", features = ["macros", "rt", "rt-multi-thread"] }
+
+
+
+

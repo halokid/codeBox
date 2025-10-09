@@ -1,0 +1,116 @@
+use cf_rustracing::sampler::AllSampler;
+use cf_rustracing_jaeger::Tracer;
+use cf_rustracing_jaeger::reporter::JaegerCompactReporter;
+use std::net::Ipv4Addr;
+use std::collections::HashMap;
+use std::os::macos::raw::stat;
+use reqwest::header::{HeaderMap, HeaderValue};
+
+
+#[tokio::main]
+async fn main() {
+    // Creates a tracer
+    let (tracer, mut span_rx) = Tracer::new(AllSampler);
+    {
+        let span = tracer.span("sample_op").start();
+
+        // 在 span 活着的时候获取上下文
+        if let Some(ctx) = span.context() {
+            let state = ctx.state();
+            // let uber_trace_id = format!(
+            //     "{:x}:{:x}:{:x}:{:x}",
+            //     state.trace_id(), // trace-id
+            //     state.span_id(),   // span-id
+            //     state.parent_id().to_u64(), // parent-span-id
+            //     state.flags(),      // flags
+            // );
+
+            // let uber_trace_id = format!(
+            //     "{}:{}:0:{}",
+            //     state.trace_id(),   // trace-id (128位 hex)
+            //     state.span_id(),    // span-id (64位 hex)
+            //     state.flags()       // flags
+            // );
+
+            // let uber_trace_id = format!("{}:{}:0:1", state.trace_id(), state.span_id());
+            // let uber_trace_id = format!("00-{}-{}-01", state.trace_id(), state.span_id());
+
+            let trace_id = format!("{:032x}", state.trace_id()); // 32 hex
+            let span_id = format!("{:016x}", state.span_id());   // 16 hex
+            let traceparent = format!("00-{}-{}-01", trace_id, span_id);
+
+            // 构造 header
+            let mut headers = HeaderMap::new();
+
+            headers.insert(
+                "traceparent",
+                HeaderValue::from_str(&traceparent.as_str()).unwrap(),
+            );
+
+
+            // headers.insert(
+            //     "uber-trace-id",
+            //     // HeaderValue::from_str(&uber_trace_id).unwrap(),
+            //     HeaderValue::from_str(uber_trace_id.as_str()).unwrap(),
+            // );
+
+            // headers.insert(
+            //     "Traceparent",
+            //     HeaderValue::from_str(uber_trace_id.as_str()).unwrap(),
+            // );
+
+            // Do something
+            // let resp = reqwest::get("http://localhost:5001/process")
+            // let resp = reqwest::get("https://httpbin.org/ip")
+            // .await.unwrap()
+            // .json>()
+            // .await.unwrap();
+
+            let http_client = reqwest::Client::new();
+            // let resp = http_client.get("https://httpbin.org/ip").send().await.unwrap().text().await;
+            // let resp = http_client.get("http://localhost:5000/call-b").send().await.unwrap().text().await;
+            // let resp = http_client.get("http://localhost:5001/process").send().await.unwrap().text().await;
+            let resp = http_client
+              .get("http://localhost:8080/hello")
+              .headers(headers)
+              .send()
+              .await
+              .unwrap()
+              .text()
+              .await;
+
+            println!("{resp:#?}");
+        }
+
+        println!("{}", "job done!");
+    } // The dropped span will be sent to `span_rx`
+
+    let span = span_rx.recv().await.unwrap();
+    assert_eq!(span.operation_name(), "sample_op");
+
+    // ---- 这里获取 trace_id 和 span_id ----
+    // if let Some(ctx) = span.context() {
+    //     let state = ctx.state();
+    //     println!("trace_id = {}", state.trace_id());
+    //     println!("span_id  = {}", state.span_id());
+    // }
+
+    // let context = span.context();
+    // let trace_id = context.state().trace_id();
+    // let span_id = context.state().span_id();
+    // println!("trace_id = {}", trace_id);
+    // println!("span_id  = {}", span_id);
+
+    // Reports this span to the local jaeger agent
+    let reporter = JaegerCompactReporter::new(
+        "sample_service",
+        (Ipv4Addr::LOCALHOST, 6831).into(),
+        (Ipv4Addr::LOCALHOST, 0).into(),
+    )
+    .await
+    .unwrap();
+
+    reporter.report(&[span]).await.unwrap();
+}
+
+

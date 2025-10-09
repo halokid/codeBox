@@ -56,7 +56,14 @@ func main() {
 		_, span := tr.Start(ctx, "say-hello")
 		defer span.End()
 
-		c.JSON(http.StatusOK, gin.H{"message": "Hello from Go Gin"})
+		// 获取所有 Header（map[string][]string 类型）
+    allHeaders := c.Request.Header
+    c.JSON(http.StatusOK, gin.H{
+        "all_headers": allHeaders,
+    })
+		//c.JSON(http.StatusOK, gin.H{"message": "Hello from Go Gin"})
+
+
 	})
 
 	port := os.Getenv("PORT")
